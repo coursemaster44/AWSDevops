@@ -1,60 +1,66 @@
 # AWSDevops
-**Section 2 : Getting Started**
+Section 2 : Getting Started
+---
+**2.7 Setting up your AWS Free Tier Account**
 
-2.7 Setting up your AWS Free Tier Account
-
-           Step1. Open your browser and search for “Setting up your AWS free Tier Account.”
-
-Step2: Click on AWS Free Tier
+**Step-1: Open your browser and search for “Setting up your AWS free Tier Account.”**
 
 
-Step3: Click on Create Free account
+**Step-2: Click on AWS Free Tier**
 
-Step4: Provide 
+
+
+**Step-3: Click on Create Free account**
+
+
+**Step4: Provide**
 - Email address,
 - Password,
 - Confirm Password,
 - AWS Account  Name 
 and click on continue.
 
-Step5: Provide Contact information,address and other details.
+
+**Step-5: Provide Contact information,address and other details.**
           
-Step6: Provide Payment information and submit
-
-Step7: Authenticate yourself with OTP and Click Continue
-
-Step8: Select Free Basic Plan
-
-Step9: Select your Role and interest area.
+          
+**Step-6: Provide Payment information and submit**
 
 
+**Step-7: Authenticate yourself with OTP and Click Continue**
 
-Step10: Sign-In
+
+**Step-8: Select Free Basic Plan**
+
+
+**Step-9: Select your Role and interest area.**
+
+
+**Step10: Sign-In**
 Provide your Email Address which was given at the creation of the account.
 Click Next
 
-Step 11 :Provide password and Click on Sign in
+**Step 11 :Provide password and Click on Sign in**
 
-Step 12: Click on services
+**Step 12: Click on services**
 
-Step13-Check  All services
+**Step13-Check  All services**
 
-Step14: Goto https://aws.amazon.com/free
+**Step14: Goto https://aws.amazon.com/free**
 See :-This free tier account is valid for 12 months
 
-Step15- Scroll down to see the limit for Amazon Ec2 is 750 hrs.
+**Step15- Scroll down to see the limit for Amazon Ec2 is 750 hrs.**
 
-Step16- Creating billing alert
+**Step16- Creating billing alert**
 Go to AWS Console>Your profile>My Billing dashboard
 
 
-Step17:This Billing alert is only created as Global.
+**Step17:This Billing alert is only created as Global.**
 
 Click on Billing Preferences under Preferences tab
 
-Step 18:Select Receive Free tier Usage Alerts and Provide your Email address
-Select Receive Billing alerts
-Click-Save preferences
+**Step 18:Select Receive Free tier Usage Alerts and Provide your Email address**
+Select Receive Billing alerts> Click to Save preferences
 
 Step19: For receiving alert One should Create alert in Cloudwatch(Monitoring service)
          Open CloudWatch by going AWS Console>All services>CloudWatch>Billing
