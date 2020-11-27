@@ -13,7 +13,7 @@ Section 2 : Getting Started
 **Step-3: Click on Create Free account**
 
 
-**Step4: Provide**
+**Step-4: Provide**
 - Email address,
 - Password,
 - Confirm Password,
@@ -47,69 +47,58 @@ Click Next
 **Step13-Check  All services**
 
 **Step14: Goto https://aws.amazon.com/free**
-See :-This free tier account is valid for 12 months
+Note-:-This free tier account is valid for 12 months
 
 **Step15- Scroll down to see the limit for Amazon Ec2 is 750 hrs.**
 
 **Step16- Creating billing alert**
-Go to AWS Console>Your profile>My Billing dashboard
+- Go to AWS Console>Your profile>My Billing dashboard
 
 
 **Step17:This Billing alert is only created as Global.**
 
-Click on Billing Preferences under Preferences tab
+- Click on Billing Preferences under Preferences tab
 
 **Step 18:Select Receive Free tier Usage Alerts and Provide your Email address**
-Select Receive Billing alerts> Click to Save preferences
+- Select Receive Billing alerts> Click to Save preferences
 
-Step19: For receiving alert One should Create alert in Cloudwatch(Monitoring service)
-         Open CloudWatch by going AWS Console>All services>CloudWatch>Billing
+**Step-19: For receiving alert One should Create alert in Cloudwatch(Monitoring service)**
+         - Open CloudWatch by going AWS Console>All services>CloudWatch>Billing
 
-Step20: Please Switch Region
+**Step-20: Please Switch Region**
 
-Step21:Change the Region to US East (N.Virginia)
+**Step-21:Change the Region to US East (N.Virginia)**
 
-Step22: Click on CloudWatch>Billing>Create Alarm
+**Step-22: Click on CloudWatch>Billing>Create Alarm**
 
-Step23: Scroll Down to conditions and define Threshold value to-5 USD
-           Click :Next
+**Step-23: Scroll Down to conditions and define Threshold value to-5 USD**
+           - Click :Next
 
 
-Step24: 
+**Step-24:** 
 (a)Configure actions
 (b)Notification-In-alarm
 (c)Select an SNS Topic-Create new topic
-Provide-Topic Name
-Provide-Your Email to receive notification
-Click-Create topic
+- Provide-Topic Name
+- Provide-Your Email to receive notification
+- Click-Create topic
 
-Step25:Open your mailbox and Validate the Topic subscription by Clicking on Confirm subscription.
+**Step-25:Open your mailbox and Validate the Topic subscription by Clicking on Confirm subscription.**
 
 
-Step26. Clicking on Confirm Subscription will show you the following message.
+**Step-26: Clicking on Confirm Subscription will show you the following message.**
 
-Step27- Goto :AWS Console>All services>SNS
-           See that Topic has confirmed subscription.
+**Step-27: Goto :AWS Console>All services>SNS**
+- See that Topic has confirmed subscription.
 
-Step28. Goto Step21 and Click on Next 
+**Step-28: Goto Step21 and Click on Next **
 
-Step29. Give Alarm name to Billing Alarm1
+**Step-29: Give Alarm name to Billing Alarm1**
 Click Next
 
-Step 30.  Review and Click Create Alarm
+**Step-30:  Review and Click Create Alarm**
 
-Step31. See that alarm has been created Successfully.
-
-
-
-
-
-
-
-
-
-
-
+**Step-31. See that alarm has been created Successfully.**
 
 
 
@@ -117,70 +106,82 @@ Step31. See that alarm has been created Successfully.
 
 
 2.8  IAM User Set-up
+---
 
-Step 1.Goto AWS Console>All Services>IAM>Users
+**Step-1:Goto AWS Console>All Services>IAM>Users**
 
-Step 2. Click Add user
+**Step-2: Click Add user**
 
-Step3 . Type user name- DemoUser
-
-A.Select Programmatic access 
-B. Select AWS Management Console access
-C.Console password-provide Custom Password 
+**Step-3: Type user name- DemoUser**
+- A.Select Programmatic access 
+- B. Select AWS Management Console access
+- C.Console password-provide Custom Password 
 
 Click on Permissions
 
 
-Step4:  Click on- Attach existing policies directly 
-Select- AdministratorAccess in Policy name
-Click Next:Tags
+**Step-4:  Click on- Attach existing policies directly** 
+- Select- AdministratorAccess in Policy name
+- Click Next:Tags
 
 
-Step5: Click Next :Review
-       Click on Create User
+**Step-5: Click Next :Review**
+and Now Click on Create User
 
 
-Step 6: Click to Download.csv
+**Step-6: Click to Download.csv
 You will not have access to the secret keys again after this step.
 
 
-Step7- Verify Download.csv file for User name and Password.
+**Step-7: Verify Download.csv file for User name and Password.**
 
-Step8 : IAM Dashboard>Users>Demouser
-            Verify the created Demouser 
-            Click on Demouser and see the access of the Demouser.
+**Step8 : IAM Dashboard>Users>Demouser**
+            - Verify the created Demouser 
+            - Click on Demouser and see the access of the Demouser.
 
-Step9-Click on Permissions
+**Step-9:Click on Permissions**
 
-Step 10:  Now Go to Your PC and open the Command prompt  and type-”aws configure” 
-Provide your Access key Id and Secret Access key which was downloaded in Step6.
+**Step-10:  Now Go to Your PC and open the Command prompt  and type-”aws configure” 
+Provide your Access key Id and Secret Access key which was downloaded in Step6.**
 
-Step11- To Login via console paste the download link in the browser. 
-IAM user name-Demouser
-Give Password and click on Sign In
-https://course-master1.signin.aws.amazon.com/console
+**Step11- To Login via console paste the download link in the browser.**
+- IAM user name-Demouser
+- Give Password and click on Sign In
+- https://course-master1.signin.aws.amazon.com/console
 
 
-Step12- See the console of  “Demouser” 
+**Step12- See the console of  “Demouser”**
 
 2.9 AWS CLI set-up on Windows
+---
+**Step-1: Go to https://aws.amazon.com/cli/**
 
-Step1: Go to https://aws.amazon.com/cli/
-Step2 -Click on 64-bit in the Windows section and download it.
-Step3- Open the downloaded file(AWSCLIV2.msi) >Right click > Install 
-Step 4- Click on Next
-Step5-  Accept the license agreement and click Next
-Step6- Click on Browse..
-Step7- Select the destination Folder name
-Step8-  Click on Next
-Step9- Click on Install 
-Step10- Click on Finish
-Step11- Open Local PC and Go-to Start>Command prompt>Run-as-administrator
-Step12- Type aws --version to see the version of AWS CLI
-Step13- Type “aws configure”
-Give the value of Aws secret access key and Access key id which was downloaded in 
-( Step 6: Click to Download.csv  of IAM User setup).
-Step14- Type “aws s3 ls” command to see the list of buckets in S3.
+**Step-2: -Click on 64-bit in the Windows section and download it.**
+
+**Step-3:- Open the downloaded file(AWSCLIV2.msi) >Right click > Install **
+
+**Step-4:- Click on Next**
+
+**Step-5:-  Accept the license agreement and click Next**
+
+**Step-6:- Click on Browse..**
+
+**Step-7:- Select the destination Folder name**
+
+**Step-8:-  Click on Next**
+
+**Step-9:- Click on Install **
+
+**Step-10:- Click on Finish**
+
+**Step-11:- Open Local PC and Go-to Start>Command prompt>Run-as-administrator**
+
+**Step-12:- Type aws --version to see the version of AWS CLI**
+
+**Step-13:- Type “aws configure”**
+- Give the value of Aws secret access key and Access key id 
+
+**Step14- Type “aws s3 ls” command to see the list of buckets in S3.**
 
 
 
@@ -188,67 +189,73 @@ Step14- Type “aws s3 ls” command to see the list of buckets in S3.
 
 
 2.11 Download & install Git on Windows
+---
 
-Step1- Open internet Browser and Search for Download git for windows. 
-Click on Downloads git link
+**Step-1: Open internet Browser and Search for Download git for windows. 
+Click on "Downloads git" link**
 
-Step2- Click on Download 2.28.0 for windows
+**Step-2:- Click on Download 2.28.0 for windows**
 
-Step3-  Click on the downloaded file GIT-2.28.0-64-bit.exe
+**Step-3:-  Click on the downloaded file GIT-2.28.0-64-bit.exe**
 
-Step4-- Click on Run
+**Step-4:-- Click on Run**
 
-Step5--Click Next
+**Step-5:--Click Next **
 
-Step6- Select Destination Location and Click on Next
+**Step-6:- Select Destination Location and Click on Next**
 
-Step7- Select Components and  Click on Next
+**Step-7:- Select Components and  Click on Next**
 
-Step8-  To continue,click Next.If you would like to select a different folder,click Browse.
+**Step-8:-  To continue,click Next.If you would like to select a different folder,click Browse.**
 
-Step9- Select Use Git from the Windows Command Prompt
-Click on Next
+**Step-9:- Select Use Git from the Windows Command Prompt **
+- Click on Next
 
-Step10-Select Use the OpenSSL library and Click on Next
+**Step-10:-Select Use the OpenSSL library and Click on Next**
 
-Step11-- Select Checkout Windows-style,commit unix style and Click on Next
+**Step-11:-- Select Checkout Windows-style,commit unix style and Click on Next**
 
-Step12- Select Use MinTTY and Click Next
+**Step-12:- Select Use MinTTY and Click Next**
 
-Step13- Select Enable file system caching and Enable Git credentials Manager and Click Next
+**Step-13:- Select Enable file system caching and Enable Git credentials Manager and Click Next**
 
-Step14-- Click Install
+**Step-14:-- Click Install**
 
-Step15--- Installation has been started
+**Step-15:--- Installation has been started**
 
-Step16- Select Launch Git bash
-Click on Finish
+**Step-16:- Select Launch Git bash**
+- Click on Finish
 
-Step17- Open Local PC and Goto Start>Git Bash
+**Step-17:- Open Local PC and Goto Start>Git Bash**
+
+```
 Type #“git init” to initialize the git
 Type  #“mkdir” to make a new directory(folder)
 Type # “cd test” to move into test directory
 
-Step18- Goto the path (c>users>owner>.git) -C:/Users/Pranav/.git/  as in the above to see the “test” folder just created
+```
 
-Step 19 - Type #“git help config” in Git Bash to see the manual page for git(it will open in browser when you type the command) 
+**Step18- Goto the path (c>users>owner>.git) -C:/Users/Pranav/.git/  as in the above to see the “test” folder just created**
 
-Step 20 -Type # “git init” to initialize 
-After running git init, adding and committing files/directories is possible.
+**Step 19 - Type #“git help config” in Git Bash to see the manual page for git(it will open in browser when you type the command)** 
 
-Step21-  Type # “git status”
-git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. 
+**Step 20 -Type # “git init” to initialize 
+- After running git init, adding and committing files/directories is possible.
 
-Step22 -  Create one file manually in test folder and see what happens--
-Now type git status again in git Bash--
+**Step21-  Type # “git status”
+git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. **
 
-Step23 -Type # “ git add .” This command adds one or more to the staging area.
-Then type git status to see the status.
+**Step22 -  Create one file manually in test folder and see what happens--
+Now type git status again in git Bash--**
 
-Step24-  Type #git commit -m”first commit” 
-This command records or snapshots the file permanently in the version history.
+**Step23 -Type # “ git add .” This command adds one or more to the staging area.
+Then type git status to see the status.**
 
-Step25-  Type # git status 
+**Step24-  Type #git commit -m”first commit” 
+This command records or snapshots the file permanently in the version history.**
+
+|Step25-  Type # git status |
+|---|
 
 Step26-  #git log This command is used to list the version history for the current branch.
 
