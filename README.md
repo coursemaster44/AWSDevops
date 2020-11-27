@@ -1,5 +1,5 @@
 # AWSDevops
-Section 2 : Getting Started
+**Section 2 : Getting Started**
 
 2.7 Setting up your AWS Free Tier Account
 
@@ -11,10 +11,10 @@ Step2: Click on AWS Free Tier
 Step3: Click on Create Free account
 
 Step4: Provide 
-Email address,
-Password,
-Confirm Password,
-AWS Account  Name 
+- Email address,
+- Password,
+- Confirm Password,
+- AWS Account  Name 
 and click on continue.
 
 Step5: Provide Contact information,address and other details.
