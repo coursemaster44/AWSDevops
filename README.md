@@ -94,7 +94,7 @@ Note-:-This free tier account is valid for 12 months
 **Step-28: Goto Step21 and Click on Next **
 
 **Step-29: Give Alarm name to Billing Alarm1**
-Click Next
+- Click Next
 
 **Step-30:  Review and Click Create Alarm**
 
@@ -117,7 +117,7 @@ Click Next
 - B. Select AWS Management Console access
 - C.Console password-provide Custom Password 
 
-Click on Permissions
+- **Click on Permissions**
 
 
 **Step-4:  Click on- Attach existing policies directly** 
@@ -125,19 +125,19 @@ Click on Permissions
 - Click Next:Tags
 
 
-**Step-5: Click Next :Review**
-and Now Click on Create User
+**Step-5: Click Next :Review
+and Now Click on Create User**
 
 
 **Step-6: Click to Download.csv
-You will not have access to the secret keys again after this step.
+You will not have access to the secret keys again after this step.**
 
 
 **Step-7: Verify Download.csv file for User name and Password.**
 
 **Step8 : IAM Dashboard>Users>Demouser**
             - Verify the created Demouser 
-            - Click on Demouser and see the access of the Demouser.
+            - Click on Demouser and see the access of the Demouser.**
 
 **Step-9:Click on Permissions**
 
@@ -237,27 +237,36 @@ Type # “cd test” to move into test directory
 
 **Step18- Goto the path (c>users>owner>.git) -C:/Users/Pranav/.git/  as in the above to see the “test” folder just created**
 
-**Step 19 - Type #“git help config” in Git Bash to see the manual page for git(it will open in browser when you type the command)** 
+|Step 19 - Type #“git help config”|
+|---|
+in Git Bash to see the manual page for git(it will open in browser when you type the command)** 
 
-**Step 20 -Type # “git init” to initialize 
+|Step 20 -Type # “git init” to initialize |
+|---|
 - After running git init, adding and committing files/directories is possible.
 
-**Step21-  Type # “git status”
+|**Step21-  Type # “git status”|
+|---|
 git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. **
 
 **Step22 -  Create one file manually in test folder and see what happens--
 Now type git status again in git Bash--**
 
-**Step23 -Type # “ git add .” This command adds one or more to the staging area.
+|Step23 -Type # “ git add .”|
+|---|
+This command adds one or more to the staging area.
 Then type git status to see the status.**
 
-**Step24-  Type #git commit -m”first commit” 
-This command records or snapshots the file permanently in the version history.**
+|Step24-  Type #git commit -m”first commit”|
+|---|
+This command records or snapshots the file permanently in the version history.
 
 |Step25-  Type # git status |
 |---|
 
-Step26-  #git log This command is used to list the version history for the current branch.
+|Step26-  #git log |
+|---|
+This command is used to list the version history for the current branch.
 
 
 
@@ -277,8 +286,9 @@ Step26-  #git log This command is used to list the version history for the curre
 
 
 Section 3 : AWS Basics
+---
 
-2.IAM Introduction
+#### 2.IAM Introduction
 
 Step1- Open AWS Console>Services>IAM>Roles
 
