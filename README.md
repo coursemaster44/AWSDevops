@@ -237,17 +237,20 @@ Type # “cd test” to move into test directory
 
 **Step18- Goto the path (c>users>owner>.git) -C:/Users/Pranav/.git/  as in the above to see the “test” folder just created**
 
-|Step 19 - Type #“git help config”|
-|---|
+Step 19 - Type #“git help config”
+
 in Git Bash to see the manual page for git(it will open in browser when you type the command)** 
 
-|Step 20 -Type # “git init” to initialize |
-|---|
+Step 20 -Type # “git init” to initialize 
+
 - After running git init, adding and committing files/directories is possible.
 
-|**Step21-  Type # “git status”|
-|---|
-git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. **
+``` sh
+Step21-  Type # “git status”
+```
+
+
+git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. 
 
 **Step22 -  Create one file manually in test folder and see what happens--
 Now type git status again in git Bash--**
