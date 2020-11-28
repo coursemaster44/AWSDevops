@@ -91,7 +91,7 @@ Note-:-This free tier account is valid for 12 months
 **Step-27: Goto :AWS Console>All services>SNS**
 - See that Topic has confirmed subscription.
 
-**Step-28: Goto Step21 and Click on Next **
+**Step-28: Goto Step21 and Click on Next**
 
 **Step-29: Give Alarm name to Billing Alarm1**
 - Click Next
@@ -170,7 +170,7 @@ Provide your Access key Id and Secret Access key which was downloaded in Step6.*
 
 **Step-8:-  Click on Next**
 
-**Step-9:- Click on Install **
+**Step-9:- Click on Install**
 
 **Step-10:- Click on Finish**
 
@@ -208,7 +208,7 @@ Click on "Downloads git" link**
 
 **Step-8:-  To continue,click Next.If you would like to select a different folder,click Browse.**
 
-**Step-9:- Select Use Git from the Windows Command Prompt **
+**Step-9:- Select Use Git from the Windows Command Prompt**
 - Click on Next
 
 **Step-10:-Select Use the OpenSSL library and Click on Next**
@@ -236,13 +236,14 @@ Type # “cd test” to move into test directory
 ```
 
 **Step18- Goto the path (c>users>owner>.git) -C:/Users/Pranav/.git/  as in the above to see the “test” folder just created**
-
+```
 Step 19 - Type #“git help config”
+```
 
 in Git Bash to see the manual page for git(it will open in browser when you type the command)** 
-
+```
 Step 20 -Type # “git init” to initialize 
-
+```
 - After running git init, adding and committing files/directories is possible.
 
 ``` sh
@@ -254,21 +255,21 @@ git status will return the current working branch. If a file is in the staging a
 
 **Step22 -  Create one file manually in test folder and see what happens--
 Now type git status again in git Bash--**
-
-|Step23 -Type # “ git add .”|
-|---|
+```
+Step23 -Type # “ git add .”
+```
 This command adds one or more to the staging area.
-Then type git status to see the status.**
-
-|Step24-  Type #git commit -m”first commit”|
-|---|
+Then type git status to see the status.
+```
+Step24-  Type #git commit -m”first commit”|
+```
 This command records or snapshots the file permanently in the version history.
-
-|Step25-  Type # git status |
-|---|
-
-|Step26-  #git log |
-|---|
+```
+Step25-  Type # git status 
+```
+```
+Step26-  #git log 
+```
 This command is used to list the version history for the current branch.
 
 
