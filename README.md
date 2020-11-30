@@ -3595,9 +3595,11 @@ Scroll down to see the deployment in the EC2 Instances.
 
 
 Section 12 : Deploying Sample App With CRUD Functionality on AWS (With CodePipeline)
+---
 
 
 12.2 Setting up ec2 Instance
+---
 Step1 -AWS Console>All Services>EC2 Dashboard>Launch Instance
 Setting up ec2 instance with following  IAM Role-
 AmazonS3FullAccess
@@ -3605,6 +3607,7 @@ AmazonDynamoDBfullAccess
 AmazonSSMFullAccess
 
 12.3 Understanding CodePipeline Service Role
+---
 The AWS Data Pipeline console creates the following roles for you:
 1.DataPipelineDefaultRole - Grants AWS Data Pipeline access to your AWS resources
 2.DataPipelineDefaultResourceRole - Grants your applications access to your AWS resources
@@ -3613,6 +3616,7 @@ The AWS Data Pipeline console creates the following roles for you:
 
 
 12.4 Sample App Deployment through CodePipeline (For Single ec2)
+----
 Step1- Code Commit-
 
 Step2- CodeBuild
@@ -3827,6 +3831,7 @@ Table is Deleted.
 
 
 12.7 Sample App Deployment through CodePipeline (For ElasticBeanstalk) -1
+---
 
 Step1- Goto AWS Console>All Services>Elastic Beanstalk>Create Application
 Click on Create Application
@@ -3983,6 +3988,7 @@ Table is Deleted.
 
 
 12.8 Sample App Deployment through CodePipeline (For ElasticBeanstalk) -2
+----
 
 
 
@@ -3990,28 +3996,35 @@ Table is Deleted.
 
 
 12.9 CodePipeline with ElasticBeanstalk and ec2 fleet (Manual Approval)
+-----
 
-Step1-Create Pipeline for Elastic BeanStalk as in  step 12.8 
-Step2-Now Select pipeline and edit>Add action to the 3rd stage (AWS CodeDeploy)
-Pipeline>Edit>Edit Stage>Add action group
-Step3 -give Action Name
-Action Provider-Manual Approval
-SNS topic-
-Click Done
-Step4 -Click Add stage for Ec2 prod Deployment
-Provide Name-”Prod-Deploy”
-Click on Add Stage
-Step5-
-Click on Prod-Deploy>Add action group
-Provide Action Name 
-Action Provider-AWS CodeDeploy
-Region-
-Input Artifacts-Select SourceArtifacts from sourceartifcats and buildartifacts
-Application Name-
-Deployment Group(Edit ASG group Size value to 2 instances for deployment of production) Refer:-Sample App deployment with CodePipeline Ec2-fleet
-Click on Done
-Step6- Click on Release Change and See the Pipeline Running and application is Running 
-Step 7- Do some change in Repo and check for the changes in Running application.
+**Step1-Create Pipeline for Elastic BeanStalk as in  step 12.8**
+
+**Step2-Now Select pipeline and edit>Add action to the 3rd stage (AWS CodeDeploy)**
+- Pipeline>Edit>Edit Stage>Add action group
+
+**Step3 -give Action Name**
+- Action Provider-Manual Approval
+- SNS topic-
+- Click Done
+
+**Step4 -Click Add stage for Ec2 prod Deployment**
+- Provide Name-”Prod-Deploy”
+- Click on Add Stage
+
+**Step5-**
+- Click on Prod-Deploy>Add action group
+- Provide Action Name 
+- Action Provider-AWS CodeDeploy
+- Region-
+- Input Artifacts-Select SourceArtifacts from sourceartifcats and buildartifacts
+- Application Name-
+- Deployment Group(Edit ASG group Size value to 2 instances for deployment of production) Refer:-Sample App deployment with CodePipeline Ec2-fleet
+- Click on Done
+
+**Step6- Click on Release Change and See the Pipeline Running and application is Running** 
+
+**Step 7- Do some change in Repo and check for the changes in Running application.**
 
 
 
@@ -4032,27 +4045,36 @@ Step 7- Do some change in Repo and check for the changes in Running application.
 
 
 Section 13 : Deploying Static Website on S3 (with CodePipeline)
-13.3 Setting-up S3 Bucket
-1.1AWS>Services>S3>Create Bucket
-How to create Bucket and make it Public and Enable versioning  
-1.2 Open created bucket
+----
+**Step-13.3 Setting-up S3 Bucket**
+
+**1.1AWS>Services>S3>Create Bucket**
+-How to create Bucket and make it Public and Enable versioning  
+
+**1.2 Open created bucket**
 
 13.4 Configuring S3 Bucket for Website Hosting 
-Click on Bucket Properties>Static website hosting
-1.3 Select Use this bucket to host a website.
-Index document-index.html
+---
+- Click on Bucket Properties>Static website hosting
+
+- 1.3 Select Use this bucket to host a website.
+ - Index document-index.html
 
 13.6 Creating CodePipeline for S3 Deployment
+---
 Step2- Create Pipeline
+---
 
-2.1 Goto AWS Console>All Services>Developer Tools>CodePipeline>Pipelines>Create new Pipeline
-#Provide Pipeline name
-#Select New service role
-Click Next
-2.2 Source-AWS CodeCommit
-See the following steps for creating source
+- 2.1 Goto AWS Console>All Services>Developer Tools>CodePipeline>Pipelines>Create new Pipeline
+- Provide Pipeline name
+- Select New service role
+- Click Next
 
-13.5 Setting-up CodeCommit for Static Content
+**2.2 Source-AWS CodeCommitv
+- See the following steps for creating source
+
+**13.5 Setting-up CodeCommit for Static Content**
+```
 2.2.1  Goto AWS Console>All Services>Developer Tools>CodeCommit>Create repository
 2.2.2 Give repository name- StaticS3
  and Click on Create
@@ -4073,36 +4095,44 @@ In my case it is given already so it is not asking here.
 2.2.10
 #git push origin master
 2.2.11 Check in CodeCommit>Repository>StaticS3
-
+```
 Come back to Step 2.2 Create pipeline
 Click Next
-2.3  source stage
+**2.3  source stage**
 Select source provider as AWS Codecommit
 Repository name-StaticS3
 Branch name-master
-2.4 Skip Build stage
-2.5 Deploy stage-Select Amazon S3
+**2.4 Skip Build stage**
+
+**2.5 Deploy stage-Select Amazon S3**
 Select -region
 Select Bucket name-
    Leave S3 object key blank
    Select the check box of Extract file before deploy.
 Click next 
 
-2.6 review The Pipeline
+**2.6 review The Pipeline**
 Click Create Pipeline
-2.7 See the pipeline Running
-Step3- Editing index.html 
- See the change detection by Pipeline and access static S3 endpoint
+
+**2.7 See the pipeline Running**
+
+**Step3- Editing index.html** 
+ - See the change detection by Pipeline and access static S3 endpoint
+
 3.1 Original Website page-
+
 3.2 open file in Local PC and edit for some change and save.
+
 3.3 Open Git and type following commands-
+ ```sh
  # git status
 #git add index.html
 #git commit -m”changing Great Game”  
 #git push origin master
-3.4 Check the commit in CodeCommit
-3.5 Pipeline is activated for the changes.
-3.6 Access the endpoint of S3 and check it.
+```
+**3.4 Check the commit in CodeCommit**
+**3.5 Pipeline is activated for the changes.**
+**3.6 Access the endpoint of S3 and check it.**
 
 
 
