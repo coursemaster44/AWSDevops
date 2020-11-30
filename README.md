@@ -2032,7 +2032,7 @@ service codedeploy-agent status
 - Desired-1,Min-1,Max-1
 - Scaling Policies-None
 
-**Step10 -Add notification-No change required
+**Step10 -Add notification-No change required**
 - Click next 
 - Add tags Click next
 - Click Review and ASG will be created.
@@ -2065,23 +2065,26 @@ service codedeploy-agent status
 ----
 
 
-Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.
-Step2-Create Application
-AWS Console>All services>CodeDeploy>Applications
-Fill application name as node-sample-ap-deploy and select compute platform as EC2-On premises.
+**Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.**
+
+**Step2-Create Application**
+- AWS Console>All services>CodeDeploy>Applications
+- Fill application name as node-sample-ap-deploy and select compute platform as EC2-On premises.
 
 Application created.
 
 
-Step3-Create Launch Configuration
-Goto AWS Console>EC2>Launch Configuration
-Copy AMI name value from Launch instance section of EC2.
-Step4- Give Name,AMI,Instance type
-Enter  IAM Instance profile which was created in the first step.
+**Step3-Create Launch Configuration**
 
-Provide user data in Additional Configuration section
-Application User data
+- Goto AWS Console>EC2>Launch Configuration
+       
+- Copy AMI name value from Launch instance section of EC2.
 
+**Step4- Give Name,AMI,Instance type**
+- Enter  IAM Instance profile which was created in the first step.
+- Provide user data in Additional Configuration section
+- Application User data
+```
 #!/bin/bash
 yum update -y
 yum install ruby -y
@@ -2100,133 +2103,130 @@ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/instal
 chmod +x ./install
 ./install auto
 service codedeploy-agent status
+```
 
+**Step5-Security Groups section:Create security group with name AutoScaling-security-group-elb and give All Traffic in Rule type source anywhere (only as of now not recommended for production)**
+- Choose key pair and click on create launch configuration
 
-Step5-Security Groups section:Create security group with name AutoScaling-security-group-elb and give All Traffic in Rule type source anywhere (only as of now not recommended for production)
+- Launch configuration created.
 
-Choose key pair and click on create launch configuration
+**Step6- Select launch configuration and click the actions tab and click on create auto scaling group.**
 
-Launch configuration created.
+**Step7- Give name node-sample-ap-elb-ASG and select launch configuration node-sample-ap-elb**
 
-Step6- Select launch configuration and click the actions tab and click on create auto scaling group.
-Step7- Give name node-sample-ap-elb-ASG and select launch configuration node-sample-ap-elb
-Step8 -Configure settings for Network Select default VPC and default subnets
-Step9- select load balancing under this select application load balancer choose target group or create new target group as per following steps.
-Click on create target group
+**Step8 -Configure settings for Network Select default VPC and default subnets**
 
-Step10- In next step select instances
-Give name TG1
+**Step9- select load balancing under this select application load balancer choose target group or create new target group as per following steps.**
 
-Step11- Protocol HTTP and port no. 3000 
-Keep vpc as default.
-Keep all other settings unchanged and click on Next.
-Registration target step don't register any target as of now click on create target group.
-Target Group Created .
-Now come back to Creating auto scaling group
-Step12- In the next step keep desired capacity,minimum capacity,maximum capacity zero.
-Change it later.
-Step13- Scaling policies None
-Click next
-Step14- Click Next
-Step15- Click next
-Step16- Review your given information 
+- Click on create target group
 
+**Step10- In next step select instances**
+- Give name TG1
 
+**Step11- Protocol HTTP and port no. 3000** 
+- Keep vpc as default.
+- Keep all other settings unchanged and click on Next.
+- Registration target step don't register any target as of now click on create target group.
+- Target Group Created .
+- Now come back to Creating auto scaling group
 
+**Step12- In the next step keep desired capacity,minimum capacity,maximum capacity zero.
+Change it later.**
 
+**Step13- Scaling policies- None**
+- Click next
 
+**Step14- Click Next**
 
+**Step15- Click next**
 
-Step17- Click Create auto scaling group.
-AWS Console>EC2>Auto scaling groups
-You can see the newly created auto scaling group.Next task is to create Load balancer
-Create Load balancer
-Step18- AWS Console>EC2>Load balancers>create load balancer
-Step19- Give name node-sample-ap-elb
-Scheme-internet facing
-Ip address type-ip4
-In Listeners protocol is HTTP and Port is 3000.
-Vpc-default,select availability zones.
+**Step16- Review your given information **
 
-Step20- Click configure security group
-Step21- All traffic access for as of now.
-Next configure routing
-Next register targets-do not register any targets
-Review>>create load balancer
-Wait for the load balancer to come provisioning to the active stage.
+**Step17- Click Create auto scaling group.**
+- AWS Console>EC2>Auto scaling groups
+- You can see the newly created auto scaling group.Next task is to create Load balancer
 
-Now all the necessary steps are done
- We can move further for the new deployment with an auto scaling group.
-            First of all edit the Auto Scaling Group settings to 2 for desired,2-min and 2-max
+### Create Load balancer
 
-Step22- Update
-This will add 2 new instances check in ec2 dashboard
+**Step18- AWS Console>EC2>Load balancers>create load balancer**
 
-Create Deployment group
-Step23- Now goto AWS Console>All Services>CodeDeploy>applications
-Click on application node-sample-ap
-Click on create deployment group
+**Step19- Give name node-sample-ap-elb**
+- Scheme-internet facing
+- Ip address type-ip4
+- In Listeners protocol is HTTP and Port is 3000.
+- Vpc-default,select availability zones.
 
+**Step20- Click configure security group**
 
+**Step21- All traffic access for as of now.**
+- Next configure routing
+- Next register targets-do not register any targets
+- Review>>create load balancer
+- Wait for the load balancer to come provisioning to the active stage.
 
-Step24- Deployment type in-place
-Environment configuration select Amazon EC2 auto Scaling groups and select the node-sample-ap-elb-asg from dropdown
-Select deployment settings as per your choice
-In the load balancer tab select the enable load balancing and select application load balancer under it.
-Choose target group TG1 
-Click on create deployment group.
+_ Now all the necessary steps are done.We can move further for the new deployment with an auto scaling group.
+- First of all edit the Auto Scaling Group settings to 2 for desired,2-min and 2-max
 
-Step25- Deployment group created now go for Create Deployment.
-Step26- Click on create Deployment.
-Step27- Provide revision type-my application is stored in s3
+**Step22- Update**
+- This will add 2 new instances check in ec2 dashboard
 
-Give revision location:copy your bucket path and paste it in revision
+## Create Deployment group
+
+**Step23- Now goto AWS Console>All Services>CodeDeploy>applications**
+- Click on application node-sample-ap
+- Click on create deployment group
+
+**Step24- Deployment type in-place**
+- Environment configuration select Amazon EC2 auto Scaling groups and select the node-sample-ap-elb-asg from dropdown
+- Select deployment settings as per your choice
+- In the load balancer tab select the enable load balancing and select application load balancer under it.
+- Choose target group TG1 
+- Click on create deployment group.
+
+**Step25- Deployment group created now go for Create Deployment.**
+
+**Step26- Click on create Deployment.**
+
+**Step27- Provide revision type-my application is stored in s3**
+
+- Give revision location:copy your bucket path and paste it in revision
 Location.
 
-Revision file type .Zip
+- Revision file type .Zip
 
-Step28- Click on Create Deployment
+**Step28- Click on Create Deployment**
 
-Step29- Monitor the logs in status.
-Step30- Copy the instance public ip and paste it in browser e.g 18.191.48.249:3000
-Application is running with both ips
-Step31-Goto ALB and copy the dns and paste it in the browser.
-Application is running live
-Now hit refresh and see the host changes because of Target groups serving traffic from ALB.
+**Step29- Monitor the logs in status.**
+
+**Step30- Copy the instance public ip and paste it in browser e.g 18.191.48.249:3000**
+- Application is running with both ips
+
+**Step31-Goto ALB and copy the dns and paste it in the browser.
+- Application is running live
+- Now hit refresh and see the host changes because of Target groups serving traffic from ALB.
 
 
 
 
 7.13 Understanding and Implementing Deployment Configuration -1
+---
 (Deployment override-Codedeploy:OneAtaTime)
-Step1- Goto Previously created CodeDeployment group and Click on Create Deployment.
+----
 
-Step2- Give revision location and scroll down to deployment group override
-Step3- In deployment configuration select codeDeployDefault:oneAtatime
-Click create deployment
-Step4- In deployment lifecycle events-- 1-instance is in progress and 2 are in Pending
-Now 2nd instance is in progress and 3rd pending and in next step 3rd is in progress.
+**Step1- Goto Previously created CodeDeployment group and Click on Create Deployment.**
+
+**Step2- Give revision location and scroll down to deployment group override**
+
+**Step3- In deployment configuration select codeDeployDefault:oneAtatime**
+- Click create deployment
+
+**Step4- In deployment lifecycle events-- 1-instance is in progress and 2 are in Pending**
+- Now 2nd instance is in progress and 3rd pending and in next step 3rd is in progress.
 
 7.13 Understanding and Implementing Deployment Configuration -1
+----
 (Deployment override-Codedeploy:Custom-test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 
 
@@ -2234,21 +2234,23 @@ Now 2nd instance is in progress and 3rd pending and in next step 3rd is in progr
 
 
 7.15 Blue Green Deployment of Sample App
+----
 
-Step1- Goto Previously created CodeDeployment group and Click on Create Deployment.
-Step2 -Edit code deployment group and scroll down to deployment type
-Select Blue/Green and click on save changes.
-Step3-Now click on Create Deployment and give revision Location and create deployment.
+**Step1- Goto Previously created CodeDeployment group and Click on Create Deployment.**
 
-Step4- Monitor Lifecycle Events-
+**Step2 -Edit code deployment group and scroll down to deployment type**
+- Select Blue/Green and click on save changes.
 
-Provisioning replacement instances--3 of 3 replacement instances provisioned
-Installing application on replacement instances---3 of 3 instances updated
-Rerouting traffic to replacement instances--
-Terminating original instances----
-Monitor the Traffic shifting progress.
+**Step3-Now click on Create Deployment and give revision Location and create deployment.**
 
-Scroll down to see the deployment in the EC2 Instances.
+**Step4- Monitor Lifecycle Events-**
+- Provisioning replacement instances--3 of 3 replacement instances provisioned
+- Installing application on replacement instances---3 of 3 instances updated
+- Rerouting traffic to replacement instances--
+- Terminating original instances----
+- Monitor the Traffic shifting progress.
+
+- Scroll down to see the deployment in the EC2 Instances.
 
 
 
@@ -2270,19 +2272,21 @@ Scroll down to see the deployment in the EC2 Instances.
 
 
 Section 8 : Deploying Sample App on AWS (With CodePipeline)
+----
 
-8.3 Setting up ec2 Instance
-1.AWS Console>All services>EC2
-2. Click on Launch Instance :
-3. Select AMI Linux2
-4. Choose Instance type t2 micro.
-Click Next:Configure Instance
-5. Leave everything  default beside IAM Role and User Data Section
-Click Create IAM Role
-AWS Console>IAM>Role>Create Role
-6.-Now come back to EC2 Instance creation page.
-Select IAM Role as node-sample-ap-ec2-role
-7. Refer script for user data.
+**8.3 Setting up ec2 Instance**
+- 1.AWS Console>All services>EC2
+- 2. Click on Launch Instance :
+- 3. Select AMI Linux2
+- 4. Choose Instance type t2 micro.
+- Click Next:Configure Instance
+- 5. Leave everything  default beside IAM Role and User Data Section
+- Click Create IAM Role
+- AWS Console>IAM>Role>Create Role
+- 6.-Now come back to EC2 Instance creation page.
+- Select IAM Role as node-sample-ap-ec2-role
+- 7. Refer script for user data.
+```
 #!/bin/bash
 yum update -y
 yum install ruby -y
@@ -2293,78 +2297,86 @@ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/instal
 chmod +x ./install
 ./install auto
 service codedeploy-agent status
-8. Click Next:Add Storage---keep DefaultClick Next Tags in Tags give key as name and value as deploy
-9. Configure security groups:Give All Traffic access for as of now(not recommended in production)
-10. Click on review and Launch
-11.Create a key pair and download it .
-12.View Instances
+```
+- 8. Click Next:Add Storage---keep DefaultClick Next Tags in Tags give key as name and value as deploy
+
+- 9. Configure security groups:Give All Traffic access for as of now(not recommended in production)
+
+- 10. Click on review and Launch
+
+- 11.Create a key pair and download it .
+
+- 12.View Instances
+
 8.5 Sample App Deployment through CodePipeline (For Single ec2)
+---
 
- Step1-AWS Console>All services>DevelopersTools>CodePipeline>Getting started
+ **Step1-AWS Console>All services>DevelopersTools>CodePipeline>Getting started**
 
-Click on Create pipeline
+- Click on Create pipeline
 
-Step2- Type pipeline name as “course-master”
-In Service role select New Service role-check the box and it will take role name automatically 
+**Step2- Type pipeline name as “course-master”**
+- In Service role select New Service role-check the box and it will take role name automatically 
 
-Step3-Code commit stage:-
-Select custom location and S3 bucket Name.
-Encryption key -default
-Click on Next
+**Step3-Code commit stage:-**
+- Select custom location and S3 bucket Name.
+- Encryption key -default
+- Click on Next
 
-Step4-Select source provider as AWS Code Commit
-Fill the Repository name as node-sample-ap,
-Branch name -master
-and change detection option- Amazon Cloud watch Events 
+**Step4-Select source provider as AWS Code Commit**
+- Fill the Repository name as node-sample-ap,
+- Branch name -master
+- and change detection option- Amazon Cloud watch Events 
 
-Step5- Click on Next
+**Step5- Click on Next**
 
-Step6 -Build Stage 
-Select Build provider as AWS code build,Select your region,project name “node-sample-ap”and build type as single build 
+**Step6 -Build Stage** 
+- Select Build provider as AWS code build,Select your region,project name “node-sample-ap”and build type as single build 
 
-Step7- Click Next
-Step8- Deploy Stage:
-Type deploy provider as AWS Code Deploy,
-Region-US East(Ohio),
-Application name-”node-sample-ap-deploy” and
- Create Deployment group-node-sample-ap-group
+**Step7- Click Next**
 
-Click Next
-Click Create Pipeline
+**Step8- Deploy Stage:**
+- Type deploy provider as AWS Code Deploy,
+- Region-US East(Ohio),
+- Application name-”node-sample-ap-deploy” and
+ - Create Deployment group-node-sample-ap-group
 
-
-Step9 -See the progress of code pipeline
-First it will go to source stage and after that move to Build stage
-Now build is running you can check the status of build by clicking on details
-Build is successful now code pipeline will move further to Deploy stage
-
-Step10 -Deploy Stage:
-
-You can check the status of deploy by clicking on Details.
-Deployment  is successful now.
-You can check the application URL 
-Application  is running.
-
-Step11- Now we will change the code and push it to code commit and after that  Code pipeline will start automatically for applying the change in code.
+- Click Next
+- Click Create Pipeline
 
 
-Step12- For this first open Git Bash after that open your files to edit 
-Go to Codepipeline and see that CodePipeline is activated.
-Build is happening with the latest commit.
+**Step9 -See the progress of code pipeline**
+- First it will go to source stage and after that move to Build stage
+- Now build is running you can check the status of build by clicking on details
+- Build is successful now code pipeline will move further to Deploy stage
 
+**Step10 -Deploy Stage:**
 
+- You can check the status of deploy by clicking on Details.
+- Deployment  is successful now.
+- You can check the application URL 
+- Application  is running.
+
+**Step11- Now we will change the code and push it to code commit and after that  Code pipeline will start automatically for applying the change in code.**
+
+**Step12- For this first open Git Bash after that open your files to edit** 
+- Go to Codepipeline and see that CodePipeline is activated.
+- Build is happening with the latest commit.
 
 
 8.6 Sample App Deployment through CodePipeline (ec2-Fleet)
-Create ASG with LC and also create TG and ALB
-Now  Create pipeline for same deployed App and put ASG desired min,max value to 3 with same steps as in 8.5
-
+---
+- Create ASG with LC and also create TG and ALB
+- Now  Create pipeline for same deployed App and put ASG desired min,max value to 3 with same steps as in 8.5
 
 8.7 Sample App Deployment through CodePipeline (For ElasticBeanstalk) 
+----
 
-Step1-AWS Console>All services>DevelopersTools>CodePipeline>Getting started
-Step2-Click on Create pipeline.
-Step3--Give the source provider name as AWS CodeCommit
+**Step1-AWS Console>All services>DevelopersTools>CodePipeline>Getting started**
+
+**Step2-Click on Create pipeline.**
+
+**Step3--Give the source provider name as AWS CodeCommit**
 Step4--Provide build details-
 Refer Aws Code Build
 Step5-  Provide deploy provider as Elastic Beanstalk  
