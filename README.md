@@ -1478,7 +1478,7 @@ node_modules/
 
 
 
-Section 6 : Deploying Sample App on AWS (Without CI/CD)
+Section 6 : Deploying Sample App on AWS (Without CImm/CD)
 ---
 
 6.3 Setting-up ec2 Instance
@@ -1493,10 +1493,10 @@ Section 6 : Deploying Sample App on AWS (Without CI/CD)
 - 3.4 Choose Instance type t2 micro and Click Next:Configure Instance
 
 - 3.5 Leave everything  default beside IAM Role and User Data Section and Click Create IAM Role
-- AWS Console>IAM>Role>Create Role
+  - AWS Console>IAM>Role>Create Role
 
-3.6-Now come back to EC2 Instance creation page.
-Select IAM Role as node-sample-ap-ec2-role
+- 3.6-Now come back to EC2 Instance creation page.
+   - Select IAM Role as node-sample-ap-ec2-role
 
 3.7 Refer script for user data.
 ```sh
@@ -1513,13 +1513,13 @@ service codedeploy-agent status
 ```
 
 - 3.8 Click Next:Add Storage---keep Default
-  Click Next Tags in Tags give key as name and value as deploy
+   - Click Next Tags in Tags give key as name and value as deploy
   
 - 3.9 Configure security groups:Give All Traffic access for as of now(not recommended in production)
 
 - 3.10 Click on review and Launch
-  Create a key pair and download it .
-  View Instances
+   - Create a key pair and download it .
+  - View Instances
  
 - 6.4. Pushing Sample App on CodeCommit
 
@@ -1532,27 +1532,37 @@ Step1- Code Commit-
 
 - 1.2 Copy URL
 
-- 1.3 Goto Local PC and open Git with Application Code location and type #git init
-
+- 1.3 Goto Local PC and open Git with Application Code location and type
+```sh
+#git init
+```
+```sh
 1.4 #git status
-
+```
+```sh
 1.5 #Git add .
-
+```
+```sh
 1.6 # Git commit -m “Commit1”
-
+```
+```sh
 1.7 # Git clone https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo 
 Provide User name and password for HTTPS Code Commit.
-
+```
+```sh
 1.8 #git remote add origin https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo
      Provide User name and password for HTTPS Code Commit.
+```
 
-
+```sh
 1.9 #git push origin master
+```
 
-1.10 AWS Console>All services>Code Commit>repositories>MyRepo
+- 1.10 AWS Console>All services>Code Commit>repositories>MyRepo
 
 
 6.6.Deploying Sample App on a single ec2
+---
 
 Step1- Launch the Instance
 Open AWS Console>EC2>Launch Instance
