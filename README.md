@@ -692,58 +692,58 @@ Auto Scaling
 
 **Step1-AWS Console>All Services>EC2>Auto Scaling>Launch Configuration.**
 
-Step2- Give name as “Demo-lc” and select AMI(Copy it from Ec2 Launch Instance)
+**Step2- Give name as “Demo-lc” and select AMI(Copy it from Ec2 Launch Instance)**
 
-Step3- Select instance type t2.micro and click choose.
-           In Advanced details section,you can give User data:.
+**Step3- Select instance type t2.micro and click choose.**
+           - In Advanced details section,you can give User data:.
 
-Step4- keep storage as default
+**Step4- keep storage as default**
 
-Step5-In security group keep name as default Add rule for HTTP,Port 80.
+**Step5-In security group keep name as default Add rule for HTTP,Port 80.**
 
-Step6- select existing key pair and click on Create launch configuration.
+**Step6- select existing key pair and click on Create launch configuration.**
 
-Step7- launch configuration is created.
+**Step7- launch configuration is created.**
 
-Step8- Click on launch configuration “Demo-lc ” >actions>create auto scaling group
+**Step8- Click on launch configuration “Demo-lc ” >actions>create auto scaling group**
 
-Step9-Give auto scaling group name-
+**Step9-Give auto scaling group name-**
 
-Step10- See launch-configuration and click on Next.
+**Step10- See launch-configuration and click on Next.**
 
-Step11-Select default vpc and subnets in two regions.
-Click Next
+**Step11-Select default vpc and subnets in two regions.**
+- Click Next
 
-Step12- Keeping things Default and Click Next
+**Step12- Keeping things Default and Click Next**
 
-Step13-Group size- Desired-1,Minimum-1,Maximum-1
-
-
-Step14-Scaling policies-None ,Click Next
-
-Step15 -Click next
-
-Step16- Add tags
-Step17- Review
-Step18- Click on Create Auto Scaling Group.
-
-Step19- Auto Scaling group”demo-asg” created successfully.
+**Step13-Group size- Desired-1,Minimum-1,Maximum-1**
 
 
-Step20-  AWS Console>All Services>EC2 Dashboard
+**Step14-Scaling policies-None ,Click Next**
+
+**Step15 -Click next**
+
+**Step16- Add tags**
+
+**Step17- Review**
+
+**Step18- Click on Create Auto Scaling Group.**
+
+**Step19- Auto Scaling group”demo-asg” created successfully.**
+
+
+**Step20-  AWS Console>All Services>EC2 Dashboard**
 “1”Instance is running
 
-Step21- Now goto   AWS Console>All Services>EC2>Auto Scaling Group>demo-asg>Edit
+**Step21- Now goto   AWS Console>All Services>EC2>Auto Scaling Group>demo-asg>Edit**
 
-Step22-  Editing Group Size as Desired-3,Minimum-3,Maximum-3
-             Click on Update.
+**Step22-  Editing Group Size as Desired-3,Minimum-3,Maximum-3**
+            - Click on Update.
 
-Step23- AWS Console>All Services>EC2 Dashboard
-             See that 2 instances are adding to get the desired 3.
+**Step23- AWS Console>All Services>EC2 Dashboard**
+          - See that 2 instances are adding to get the desired 3.
 
-Step24- Check that all the 3 Instances are Up and Running.
-
-
+**Step24- Check that all the 3 Instances are Up and Running.**
 
 
 
@@ -778,37 +778,58 @@ Step24- Check that all the 3 Instances are Up and Running.
 
 
 
-11. S3 Introduction & Hands On
 
-Step1- Open AWS Console>All Services>Storage>S3
-Step2-  Click on Create Bucket
-Step3- Give Name as “myawsbucket-02112020”
-Step4-Bucket settings for Block public Access 
- If you want this bucket as Public Uncheck “Block all public access”
-Step5-  Versioning step
-Step6-Click on Create Bucket.
-Step7- Bucket is created successfully.
-Step8-Click on theBucket
-Click on Upload
-Step9 -Click on Add files and select the file to upload.
-Step10-  scroll down do Changes in ACL to give public access.
-Step11-  Select file and Click on Upload
-Step12- Select Storage Class as Standard.
-Step13-Server-side encryption settings-Disable
-Access control list (ACL)-Select Everyone(Public access)
-Keep rest of the things default and click on Upload,
-Step14-  See Upload status-Succeed.Click on the file uploaded.
-Step15- Access denied error in the Browser because this file is not Public.
-Step16-Open file and click on Make public.
-Step17- Now Open it the Browser
-            It is accessible.
-Step18- Bucket Policy
-See your Bucket it is showing as “Objects can be Public”
-Step19-  For making it Full Public we need to edit Bucket Policy
 
-Amazon S3>myawsbucket-02112020>permissions>Bucket policy
-Copy the following policy in that section- and click on save.
+### 11. S3 Introduction & Hands On
 
+
+**Step1- Open AWS Console>All Services>Storage>S3**
+
+**Step2-  Click on Create Bucket**
+
+**Step3- Give Name as “myawsbucket-02112020”**
+
+**Step4-Bucket settings for Block public Access**
+- If you want this bucket as Public Uncheck “Block all public access”
+
+**Step5-  Versioning step**
+
+**Step6-Click on Create Bucket.**
+
+**Step7- Bucket is created successfully.**
+
+**Step8-Click on theBucket**
+- Click on Upload
+
+**Step9 -Click on Add files and select the file to upload.**
+
+**Step10-  scroll down do Changes in ACL to give public access.**
+
+**Step11-  Select file and Click on Upload**
+
+**Step12- Select Storage Class as Standard.**
+
+**Step13-Server-side encryption settings-Disable**
+- Access control list (ACL)-Select Everyone(Public access)
+- Keep rest of the things default and click on Upload,
+
+**Step14-  See Upload status-Succeed.Click on the file uploaded.**
+
+**Step15- Access denied error in the Browser because this file is not Public.**
+
+**Step16-Open file and click on Make public.**
+
+**Step17- Now Open it the Browser**
+            -It is accessible.
+            
+**Step18- Bucket Policy**
+- See your Bucket it is showing as “Objects can be Public”
+
+**Step19-  For making it Full Public we need to edit Bucket Policy**
+
+- Amazon S3>myawsbucket-02112020>permissions>Bucket policy
+- Copy the following policy in that section- and click on save.
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -824,15 +845,23 @@ Copy the following policy in that section- and click on save.
         }
     ]
 }
-Step20- Bucket is now Public.
-Step21-Versioning
-Check if the versioning is enabled or not.
-Step22-- To see the versioning function.Create the following Demo file and save it in your local PC.
-Step23-  Open bucket and click on Upload And make the file public.
-Step24- Check the output of file.
-Step25-Edit the file and upload it again and make it Public.
-Step26-  This version is  the latest version.To see all version click on List versions
-Step27- Open the latest version and see the difference.
+```
+**Step20- Bucket is now Public.**
+
+**Step21-Versioning**
+-Check if the versioning is enabled or not.
+
+**Step22-- To see the versioning function.Create the following Demo file and save it in your local PC.**
+
+**Step23-  Open bucket and click on Upload And make the file public.**
+
+**Step24- Check the output of file.**
+
+**Step25-Edit the file and upload it again and make it Public.**
+
+**Step26-  This version is  the latest version.To see all version click on List versions**
+
+**Step27- Open the latest version and see the difference.**
 
 
 
@@ -875,145 +904,141 @@ Step27- Open the latest version and see the difference.
 
 
 
-12. Cloudwatch Introduction & Hands On
-Step1- Goto AWS Console>All Services>CloudWatch>Events>Get started
+### 12. Cloudwatch Introduction & Hands On
+
+**Step1- Goto AWS Console>All Services>CloudWatch>Events>Get started**
 
 
 
-Step2- You will see the Following Screen.
+**Step2- You will see the Following Screen.**
 
 
-Step3- In Event Source---
-      Select Event Pattern and then 
-      Click on Build event pattern to match as “events by service” 
+**Step3- In Event Source---**
+      - Select Event Pattern and then 
+      - Click on Build event pattern to match as “events by service” 
   
-Step4 -In Service Name-Select” Ec2 “
-                 Event Type-”Ec2 Instance State-change Notification”
-                 Select Specific state as “stopping”
-                 Select Any Instance
-                 Click on Add target in Targets Tab
+**Step4 -In Service Name-Select” Ec2 “**
+                 - Event Type-”Ec2 Instance State-change Notification”
+                 - Select Specific state as “stopping”
+                 - Select Any Instance
+                 - Click on Add target in Targets Tab
    
 
 
 
 
-Step5- Select SNS Topic as “Ec2Stopping-CWevents” in Targets
+**Step5- Select SNS Topic as “Ec2Stopping-CWevents” in Targets**
              ****To create SNS Topic See next Step6
 
-Step6- Create SNS Topic
-  6.1  Goto AWS Console>All service>Simple Notification Service>Create Topic
+**Step6- Create SNS Topic**
+ - 6.1  Goto AWS Console>All service>Simple Notification Service>Create Topic
          Give name as Ec2Stopping-CWevents 
-6.2 Click on Create Topic
-6.3 Topic Created Successfully.
-       Click on Create subscription.
+- 6.2 Click on Create Topic
+- 6.3 Topic Created Successfully.Now Click on Create subscription.
         
-6.4  Select Protocol as Email and endpoint as “coursemaster44@gmail.com”
-        Click on Create subscription.
+- 6.4  Select Protocol as Email and endpoint as “coursemaster44@gmail.com”.Now Click on Create subscription.
 
-6.5 Subscription created successfully.
-      Status is showing Pending confirmation.
-To confirm this subscription check for the message from<no-reply@sns.amazonaws.com>    in your Email Inbox.
+- 6.5 Subscription created successfully.
+      - Status is showing Pending confirmation.
+      - To confirm this subscription check for the message from<no-reply@sns.amazonaws.com>    in your Email Inbox.
       
-6.6 Check the Email Inbox or Spam
-       In my case it arrived in Spam
-       Click on “Confirm subscription”
+- 6.6 Check the Email Inbox or Spam
+       - In my case it arrived in Spam
+       - Click on “Confirm subscription”
 
-6.7 Subscription Confirmed.
+- 6.7 Subscription Confirmed.
 
-6.8 Now goto Amazon SNS >Topics>Ec2Stopping-CWevents
-     Status is confirmed.
+- 6.8 Now goto Amazon SNS >Topics>Ec2Stopping-CWevents
+     - Status is confirmed.
 
-Step7- Goto Step5
-          Click on Configure details.
+**Step7- Goto Step5**
+          - Click on Configure details.
 
-Step8- Configure Rule-
-            Give name as “ec2stoppingRule” and Description “ec2stoppingRule”
-            Keep state enabled
-            Click on Create rule
+**Step8- Configure Rule-**
+            - Give name as “ec2stoppingRule” and Description “ec2stoppingRule”
+            - Keep state enabled
+            - Click on Create rule
 
-Step9 - Rule created. 
+**Step9 - Rule created.** 
       
-Step10 -Goto AWS Console>All Services>EC2>EC2 Dashboard.
-                In my Case one Instance is Running.
+**Step10 -Goto AWS Console>All Services>EC2>EC2 Dashboard.**
+           - In my Case one Instance is Running.
                       
-Click on Instance>Actions>Instance State>Stop Instance
+- Click on Instance>Actions>Instance State>Stop Instance
 
-Click on Stop
-
-
-
-Step11-  Instance is in stopping stage
+- Click on Stop
 
 
-Step12- Check your Email from <no-reply@sns.amazonaws.com> which was given in Subscription of Topic.
+
+**Step11-  Instance is in stopping stage**
+
+
+**Step12- Check your Email from <no-reply@sns.amazonaws.com> which was given in Subscription of Topic.**
 
 
 You can detect and react to changes in the state.
 
 
 
+
 CloudWatch Alarm
+---
 
-Step1 -Goto AWS Console>All Services>CloudWatch
+**Step1 -Goto AWS Console>All Services>CloudWatch**
  
-Step2- Click on Alarms>Create Alarm
+**Step2- Click on Alarms>Create Alarm**
 
-Step3 -Click on Select metric
+**Step3 -Click on Select metric**
 
-Step4- Select Ec2 in All metrics
+**Step4- Select Ec2 in All metrics**
 
-Step5- Click on per-Instance metrics
+**Step5- Click on per-Instance metrics**
 
-Step6 -Goto AWS Console>All Services>Ec2 dashboard and copy Instance-id
+**Step6 -Goto AWS Console>All Services>Ec2 dashboard and copy Instance-id**
              
-Step7 - Now Paste it in the search bar-
+**Step7 - Now Paste it in the search bar-**
 
-Step8 -Click to Select CPUUtilization
+**Step8 -Click to Select CPUUtilization**
 
-Step9 -Click on select metric
+**Step9 -Click on select metric**
 
-Step10- No action in Specify metric and conditions.
+**Step10- No action in Specify metric and conditions.**
              
-Step11 -
-Scroll down and come to Conditions.
-Threshold type-static
-Whenever CPUutilization is -Lower
-Than define the threshold value-40
+**Step11 -Scroll down and come to Conditions.**
+- Threshold type-static
+- Whenever CPUutilization is -Lower
+- Than define the threshold value-40
 
 
-Step12 -In Notification
-         Alarm stage trigger-In Alarm
-        Select an SNS topic(See-Create SNS Topic) -select an existing topic
-        Send a notification to--Ec2Stopping-CWevents
+**Step12 -In Notification**
+        - Alarm stage trigger-In Alarm
+        - Select an SNS topic(See-Create SNS Topic) -select an existing topic
+        - Send a notification to--Ec2Stopping-CWevents
         
 
-
-
-Step12-Scroll down and come to Ec2 action.
-     Alarm stage trigger--In Alarm
-     Take the following action--select stop this instance
-     Click on Next
+**Step12-Scroll down and come to Ec2 action.**
+     - Alarm stage trigger--In Alarm
+     - Take the following action--select stop this instance
+     - Click on Next
 
 
 
-Step13- Give Alarm name-My-alarm
-             Click on Next
+**Step13- Give Alarm name-My-alarm**
+            - Click on Next
               
 
-Step14- Preview all the details and click on “create alarm”
+**Step14- Preview all the details and click on “create alarm”**
 
-Step15- Alarm created successfully.
-             See in Alarms My-alarm is showing “Insufficient data”
-            Hit refresh button
+**Step15- Alarm created successfully.**
+          - See in Alarms My-alarm is showing “Insufficient data”
+           - Hit refresh button
 
-Step16- State is showing In-alarm
+**Step16- State is showing In-alarm**
 
-Step17- Check you Email and you would see the following email.
+**Step17- Check you Email and you would see the following email.**
 
-Step18- Check the instance in EC2-Dashboard.
-             It is showing stopped as per Cloudwatch Alarm configuration.
-
-
+**Step18- Check the instance in EC2-Dashboard.**
+         - It is showing stopped as per Cloudwatch Alarm configuration.
 
 
 
@@ -1042,57 +1067,73 @@ Step18- Check the instance in EC2-Dashboard.
 
 
 
-14. DynamoDB Hands On
+
+
+### 14. DynamoDB Hands On
+
 
 Dynamo DB
-Step1- AWS Console>All services>DynamoDB
- Step2- Click on Create table
- Step3- Give Table name-Course master
-                   Primary key-id
- Step4- Check  that the storage is 0 bytes
- Step5- click on items>create item
- Step6- click on + button
- Step7- enter id -101
-       	Name-ram
-           Mobile-0123123123  and click on save.
+---
+
+ **Step1- AWS Console>All services>DynamoDB**
+ **Step2- Click on Create table**
+ **Step3- Give Table name-Course master**
+          - Primary key-id
+ **Step4- Check  that the storage is 0 bytes**
+ **Step5- click on items>create item**
+ **Step6- click on + button**
+ **Step7-  - enter id -101
+       	 - Name-ram
+           - Mobile-0123123123  and click on save.
  
-Step8- check the entry in Items
- Step9- create another  item with following details.
-Id-102
-Address-delhi
-mobile-0120120120120
- Step10 check the entry
+**Step8- check the entry in Items**
+
+ **Step9- create another  item with following details.**
+- Id-102
+- Address-delhi
+- mobile-0120120120120
+
+ **Step10 check the entry**
  
-Step11-third entry was also done with the same process.
+**Step11-third entry was also done with the same process.**
  
-Step12- See there are 3 entries.
+**Step12- See there are 3 entries.**
  
-Step13- now select scan and click on add filter put the value -mobile,number,exists
+**Step13- now select scan and click on add filter put the value -mobile,number,exists**
  	You will get therow for entry with mobile
  
- Step14- AWS Console>dynamoDB>Create table
-Now click on Query in partition key select id and in number-102
-      	See the with details.
- Step15-now create a table with a primary and sort key.
-            	Partition key-name
-            	Sort key- last name
- Step16-put the value for name-shankar,last name-singh
-         	Click on save
- Step17-See your table details.
-Step18- Actions>Duplicate
- Step19-Put the value for entry name-ramesh for which you want to duplicate.
- Step 20 Click on save
- Step21 check for the duplicate entry just created.
- Step22- To delete items Actions>Delete>select item >delete
- Step23-Item is deleted.
- Step24- For Deleting table select table and click on delete table.
-Type delete click on delete
+ **Step14- AWS Console>dynamoDB>Create table**
+ Now click on Query in partition key select id and in number-102
+ See the with details.
+ 
+ **Step15-now create a table with a primary and sort key.**
+           - Partition key-name
+           - Sort key- last name
+ **Step16-put the value for name-shankar,last name-singh**
+        - Click on save
+ **Step17-See your table details.**
+ 
+**Step18- Actions>Duplicate**
+
+ **Step19-Put the value for entry name-ramesh for which you want to duplicate.**
+ 
+ **Step 20 Click on save**
+ 
+ **Step21 check for the duplicate entry just created.**
+ 
+ **Step22- To delete items Actions>Delete>select item >delete**
+ 
+ **Step23-Item is deleted.**
+ 
+ **Step24- For Deleting table select table and click on delete table.**
+- Type delete click on delete
 
 
 
 
 
 16.Elastic Beanstalk Hands On
+---
 
 Step1- Create an application and an environment
 Goto-
