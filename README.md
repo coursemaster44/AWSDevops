@@ -2201,7 +2201,7 @@ Location.
 **Step30- Copy the instance public ip and paste it in browser e.g 18.191.48.249:3000**
 - Application is running with both ips
 
-**Step31-Goto ALB and copy the dns and paste it in the browser.
+**Step31-Goto ALB and copy the dns and paste it in the browser.**
 - Application is running live
 - Now hit refresh and see the host changes because of Target groups serving traffic from ALB.
 
@@ -2275,16 +2275,16 @@ Section 8 : Deploying Sample App on AWS (With CodePipeline)
 ----
 
 **8.3 Setting up ec2 Instance**
-- 1.AWS Console>All services>EC2
+- 1. AWS Console>All services>EC2
 - 2. Click on Launch Instance :
 - 3. Select AMI Linux2
 - 4. Choose Instance type t2 micro.
-- Click Next:Configure Instance
+     Click Next:Configure Instance
 - 5. Leave everything  default beside IAM Role and User Data Section
-- Click Create IAM Role
-- AWS Console>IAM>Role>Create Role
-- 6.-Now come back to EC2 Instance creation page.
-- Select IAM Role as node-sample-ap-ec2-role
+-    Click Create IAM Role
+-    AWS Console>IAM>Role>Create Role
+- 6.  Now come back to EC2 Instance creation page.
+     Select IAM Role as node-sample-ap-ec2-role
 - 7. Refer script for user data.
 ```
 #!/bin/bash
