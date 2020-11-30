@@ -294,40 +294,38 @@ Section 3 : AWS Basics
 
 #### 2.IAM Introduction
 
-Step1- Open AWS Console>Services>IAM>Roles
+**Step1- Open AWS Console>Services>IAM>Roles**
 
-Step2- Click on Roles
+**Step2- Click on Roles**
 
-Step3- Click on create Role
+**Step3- Click on create Role**
 
-Step4- Select AWS Service as EC2
-  Click on Permissions
+**Step4- Select AWS Service as EC2**
+  - Click on Permissions
 
-Step5- Search for S3 and Select Amazons3FullAccess and click on Next Tags
+**Step5- Search for S3 and Select Amazons3FullAccess and click on Next Tags**
 
-Step6- Click Next:Review
+**Step6- Click Next:Review**
 
-Step7-Give name of Role as “S3readOnlyAccess-demo and Click on create role
+**Step7-Give name of Role as “S3readOnlyAccess-demo and Click on create role**
 
-Step8- Type demo in Search Bar and verify the Role Created
- Click on “S3readOnlyAccess-demo”
+**Step8- Type demo in Search Bar and verify the Role Created**
+ - Click on “S3readOnlyAccess-demo”
 
-Step9- Click on Permissions>AmazonS3FullAccess
+**Step9- Click on Permissions>AmazonS3FullAccess**
 
-Step10-
-Please Note that in JSON Policy there are three things to see-
-Resource,
-Action,
-Effect
+**Step10-Please Note that in JSON Policy there are three things to see-**
+- Resource,
+- Action,
+- Effect
 
-Step11- Click on Roles>S3readOnlyAccess-demo>Trust Relationships >Edit Trust relationship
+**Step11- Click on Roles>S3readOnlyAccess-demo>Trust Relationships >Edit Trust relationship**
 
-Step12-  In Edit Trust relationship-
- Please Note that in JSON Policy there are four things to see-
- Effect
-Principal
-Service
-Action
+**Step12-  In Edit Trust relationship-Please Note that in JSON Policy there are four things to see-**
+- Effect
+- Principal
+- Service
+- Action
 
 
 
