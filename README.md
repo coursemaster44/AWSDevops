@@ -2377,40 +2377,60 @@ service codedeploy-agent status
 **Step2-Click on Create pipeline.**
 
 **Step3--Give the source provider name as AWS CodeCommit**
-Step4--Provide build details-
-Refer Aws Code Build
-Step5-  Provide deploy provider as Elastic Beanstalk  
-            Select region-US East Ohio
-            Application name-newnodeproject
-            environment-New Node Project-env
-Step6--- Click on Next
-Step7- Click on Create Pipeline
-            The pipeline has been created.
-Step8-Source phase in progress
-Step9-Source has been completed and build is in progress.
-Step10- Build is completed and deploy is in progress.
-Step11-Deploy has been completed.
-Step12-   Goto elastic beanstalk and click on goto environment as status is showing healthy.
-See your application is running 
 
-8.8 CodePipeline with ElasticBeanstalk and ec2 fleet (Manual Approval)
-Step1- refer last code pipeline of 8.7 and Click on Edit 
-Step2- Click Add stage Next To deploy
-Step3 -Give Name of stage as “manualApproval”.Click Add stage
-Step4- Click on Add action group in Stage created.
-Step5 -give action name and select action provider>approval>manualapproval
-Give name of SNS topic previously created(for sending EMail)
-Click Done
-Step6 -click on add stage next to manaulapproval stage
-Step7- give name as prod-deploy
-Step8 -Click on Add action group in prod-deploy and do steps
-Action name,action provider,region,input artifacts-source,Appl name,Dep group
-Step9 - click on save pipeline.click on release changes.
-Pipeline will be activated automatically till approval step then approval needed sent on Email .
-After getting approval pipeline would start to next step Prod-deploy.
-After the pipeline is completed successfully.
-Check the production environment.
-##check for AWSPipeline bucket to see the source artifacts and build artifacts
+**Step4--Provide build details-**
+- Refer Aws Code Build
+
+**Step5-  Provide deploy provider as Elastic Beanstalk**  
+            - Select region-US East Ohio
+            - Application name-newnodeproject
+            -  environment-New Node Project-env
+
+**Step6- Click on Next**
+
+**Step7- Click on Create Pipeline.The pipeline has been created.**
+
+**Step8-Source phase in progress**
+
+**Step9-Source has been completed and build is in progress.**
+
+**Step10- Build is completed and deploy is in progress.**
+
+**Step11-Deploy has been completed.**
+
+**Step12-   Goto elastic beanstalk and click on goto environment as status is showing healthy.**
+        - See your application is running 
+
+**8.8 CodePipeline with ElasticBeanstalk and ec2 fleet (Manual Approval)**
+
+**Step1- refer last code pipeline of 8.7 and Click on Edit 
+
+**Step2- Click Add stage Next To deploy**
+
+**Step3 -Give Name of stage as “manualApproval”.Click Add stage**
+
+**Step4- Click on Add action group in Stage created.**
+
+**Step5 -give action name and select action provider>approval>manualapproval**
+
+**Give name of SNS topic previously created(for sending EMail)**
+- Click Done
+
+**Step6 -click on add stage next to manaulapproval stage**
+
+**Step7- give name as prod-deploy**
+
+**Step8 -Click on Add action group in prod-deploy and do steps**
+- Action name,action provider,region,input artifacts-source,Appl name,Dep group
+
+**Step9 - click on save pipeline.click on release changes.**
+
+**Pipeline will be activated automatically till approval step then approval needed sent on Email .**
+- After getting approval pipeline would start to next step Prod-deploy.
+- After the pipeline is completed successfully.
+- Check the production environment.
+
+###  check for AWSPipeline bucket to see the source artifacts and build artifacts
 
 
 
@@ -2434,85 +2454,114 @@ Check the production environment.
 
 
 Section 10 : Deploying Sample App With CRUD Functionality on AWS ( Without CI/CD)
+----
 
 10.2 Setting up ec2 Instance
-Step1 -Setting up ec2 instance with following  IAM Role-
-AmazonS3FullAccess
-AmazonDynamoDBfullAccess
-AmazonSSMFullAccess
+-----
 
-Step2- AWS Console>All Services>EC2 Dashboard>Select Instance>Actions>Connect
+**Step1 -Setting up ec2 instance with following  IAM Role-**
+- AmazonS3FullAccess
+- AmazonDynamoDBfullAccess
+- AmazonSSMFullAccess
 
-Step3- Click on Connect
+**Step2- AWS Console>All Services>EC2 Dashboard>Select Instance>Actions>Connect**
 
-10.4 Pushing Sample App on CodeCommit
-1.1 AWS Console>All services>Code Commit>repositories>create repository>Create
+**Step3- Click on Connect**
+
+**10.4 Pushing Sample App on CodeCommit**
+
+**Step1-**
+- 1.1 AWS Console>All services>Code Commit>repositories>create repository>Create
     Give Name-MYRepo
-1.2 Copy URL
-1.3 Goto Local PC and open Git with Application Code location and type #git init
-1.4 #git status
-1.5 #Git add .
-1.6 #Git commit -m “Commit1”
+- 1.2 Copy URL
+- 1.3 Goto Local PC and open Git with Application Code location and type
+```
+#git init
+```
+```
+- 1.4 #git status
+```
+```
+- 1.5 #Git add .
+```
+```
+- 1.6 #Git commit -m “Commit1”
+```
 
-1.7 # Git clone https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo 
-      Provide User name and password for HTTPS Code Commit.
+- 1.7 # Git clone https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo 
+      - Provide User name and password for HTTPS Code Commit.
 
-1.8 #git remote add origin https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo
-     Provide User name and password for HTTPS Code Commit.
-1.9 #git push origin master
-1.10 AWS Console>All services>Code Commit>repositories>MyRepo
+- 1.8 #git remote add origin https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo
+     - Provide User name and password for HTTPS Code Commit.
+```     
+- 1.9 #git push origin master
+```
+- 1.10 AWS Console>All services>Code Commit>repositories>MyRepo
 
 
 10.5 Pushing Sample App on S3
-Open AWS Console>Services>S3 bucket>upload your code in zip file format
+---
+**Open AWS Console>Services>S3 bucket>upload your code in zip file format**
 
 
 10.6 Deploying Sample App on single ec2 
-Step1- Create Ec2 with this link:- Launch instance
-          
-  In IAM Role give the following permissions-
-   To see how to create IAM Role please Refer-IAM Introduction(Role)
-Step2- AWS Console>All Services>EC2 Dashboard>Select Instance>Actions>Connect
-Step3- Click on Connect
+----
 
+**Step1- Create Ec2 with this link:- Launch instance**
+          -  In IAM Role give the following permissions-
+          -  To see how to create IAM Role please Refer-IAM Introduction(Role)
+
+**Step2- AWS Console>All Services>EC2 Dashboard>Select Instance>Actions>Connect**
+
+**Step3- Click on Connect**
+```sh
 Step4- Run #sudo yum update
 Step5- Run # sudo yum install nmap-ncat
 Step6- Run # curl -sL https://rpm.nodesource.com/setup_lts.x | bash - 
 Step7- Run# sudo yum install -y nodejs
 Step8 -Run # sudo yum install git -y
+```
 Step9-Download the Zip file from S3.
         #aws s3 “BucketPath” /home/ec2-user
-        #aws s3  cp s3://deploy28092020/Nodejs-curd-app-with-dynamodb.zip /home/ec2-user
-          
+       ```
+       #aws s3  cp s3://deploy28092020/Nodejs-curd-app-with-dynamodb.zip /home/ec2-user
+       ```
 Refer-Amazon S3
+
+
 Change directory to ec2-user and list directory
-Step10 -     #ls 
-                 Change directory to “Nodejs-curd-app-with-dynamodb”
 
+**Step10 -     #ls**
+  -  Change directory to “Nodejs-curd-app-with-dynamodb”
+```
 Step11 -Run #npm install
+```
 
-Step12- Install pm2 utility-for running the application in background without keeping busy Terminal.
+**Step12- Install pm2 utility-for running the application in background without keeping busy Terminal.**
+```
 #npm install pm2@latest -g
  #pm2 update
+```
+**Step14- Copy Ec2 Public IP Address and paste it in the browser**
+- e.g-52.66.211.218:3000
 
-Step14- Copy Ec2 Public IP Address and paste it in the browser 
-52.66.211.218:3000
-Step15- Open the Postman tool
+**Step15- Open the Postman tool**
 
-Step17- 
-             Click  on New Collection
-              Name-Ec2
-              Click on Create and create requests for-Create Table,Insert Data,read        Data,update Data,Delete Item,Delete table
+**Step17-**
+             -  Click  on New Collection
+             -  Name-Ec2
+             -  Click on Create and create requests for-Create Table,Insert Data,read Data,update Data,Delete Item,Delete table
 
-Step18- Click on three dots  … >Add request
-18.1 
-Name- Create Table 
-Save to Ec2
+**Step18- Click on three dots  … >Add request**
 
-Click on request created Create Table
-               Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/createTable
-                Select Body>raw>json>paste the following data.
+**18.1** - Name- Create Table 
+         - Save to Ec2
+
+- Click on request created Create Table
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/createTable
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName" : "Movies",
     "KeySchema": [       
@@ -2528,18 +2577,18 @@ Click on request created Create Table
         "WriteCapacityUnits": 1
     }
 }
-
+```
   
-18.2 Click on SEND
-18.3
-Check the Table created in DynamoDB. 
-Goto -AWS Console>DynamoDB>Tables>Movies(just created)
-Step19- new request for Insert Data
-Click on request created Insert data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/insertData
-                Select Body>raw>json>paste the following data.
+**18.2 Click on SEND**
+**18.3Check the Table created in DynamoDB.** 
+- Goto -AWS Console>DynamoDB>Tables>Movies(just created)
 
+**Step19- new request for Insert Data** 
+- Click on request created Insert data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/insertData
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName":"Movies",
     "Item":{
@@ -2551,52 +2600,48 @@ Click on request created Insert data
         }
     }
 }
-"New item added successfully"
+```
+- "New item added successfully"
+- Check for added item in DynamoDB
+- AWS Console>All services>DynamoDB>Tables>Items
+- “Kgf Chapter 2” is added
 
-Check for added item in DynamoDB
-AWS Console>All services>DynamoDB>Tables>Items
-“Kgf Chapter 2” is added
+**Step19- new request for ReadData** 
+- Click on request created Read data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/ReadData
+- Select Body>raw>json>paste the following data.
 
-Step19- new request for ReadData
-Click on request created Read data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/readData
-                Select Body>raw>json>paste the following data.
-
-19.1 
-Check in DynamoDB also
-
-
-Step20- 
-New request for UpdateData
-Click on request created Update data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/updateData
-                Select Body>raw>json>paste the following data.
- AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
-
-Step21- 
-
-New request for deleteItem
-Click on request created deleteItem
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/deleteItem
-                Select Body>raw>json>paste the following data.
+**19.1 Check in DynamoDB also**
 
 
-21.1 Check in DynamoDB
+**Step20- New request for UpdateData**
+- Click on request created Update data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/updateData
+- Select Body>raw>json>paste the following data.
+ - AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
 
-Step22 
+**Step21- New request for deleteItem**
+                - Click on request created deleteItem
+                - Select Post in drop-down menu
+                - Give URl---http://52.66.211.218:3000/deleteItem
+                - Select Body>raw>json>paste the following data.
 
-New request for Delete Table
-Click on request created Delete Table
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/deleteTable
-                Select Body>raw>json>paste the following data.
-Table is Deleted.
+
+**21.1 Check in DynamoDB**
+
+**Step22-New request for Delete Table**
+                - Click on request created Delete Table
+                - Select Post in drop-down menu
+                - Give URl---http://52.66.211.218:3000/deleteTable
+                - Select Body>raw>json>paste the following data.
+- Table is Deleted.
 
 
 10.7 Deploying Sample App on a ec2 fleet-1
+---------
+
 Step1.Source code is uploaded in the repository Myrepo in AWS Commit step.
 Step2- CodeBuild
 2.1 AWS Console>All services>CodeBuild>Build projects>create Build project
