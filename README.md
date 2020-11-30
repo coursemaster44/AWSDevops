@@ -292,8 +292,8 @@ This command is used to list the version history for the current branch.
 Section 3 : AWS Basics
 ---
 
-#### 2.IAM Introduction
-
+2.IAM Introduction
+---
 **Step1- Open AWS Console>Services>IAM>Roles**
 
 **Step2- Click on Roles**
@@ -330,162 +330,173 @@ Section 3 : AWS Basics
 
 
 3.IAM Hands On
-Creating IAM User(Console)
-Step 1.Goto AWS Console>All Services>IAM>Users
+---
+### Creating IAM User(Console)
 
-Step 2. Click Add user
+**Step 1.Goto AWS Console>All Services>IAM>Users**
 
-Step3 . Type user name- DemoUser
+**Step 2. Click Add user**
 
-A.Select Programmatic access 
-B. Select AWS Management Console access
-C.Console password-provide Custom Password 
+**Step3 . Type user name- DemoUser**
 
-Click on Permissions
+- A.Select Programmatic access 
+- B. Select AWS Management Console access
+- C.Console password-provide Custom Password 
 
-Step4:  Click on- Attach existing policies directly 
-Select- AdministratorAccess in Policy name
-Click Next:Tags
-Click Next :Review
+- Click on Permissions
 
-Step5:     Click on Create User
+**Step4:  Click on- Attach existing policies directly** 
+- Select- AdministratorAccess in Policy name
+- Click Next:Tags
+- Click Next :Review
 
-Step 6: Click to Download.csv
-You will not have access to the secret keys again after this step.
+**Step5:     Click on Create User**
 
-Step7- Verify Download.csv file for User name and Password.
+**Step 6: Click to Download.csv**
+- You will not have access to the secret keys again after this step.
 
-Step8 : IAM Dashboard>Users>Demouser
-            Verify the created Demouser 
-            Click on Demouser and see the access of the Demouser.
+**Step7- Verify Download.csv file for User name and Password.**
 
-Step9-Click on Permissions
+**Step8 : IAM Dashboard>Users>Demouser**
+            - Verify the created Demouser 
+            - Click on Demouser and see the access of the Demouser.
 
-Step 10:  Now Go to Your PC and open the Command prompt  and type-”aws configure” 
-Provide your Access key Id and Secret Access key which was downloaded in Step6.
+**Step9-Click on Permissions**
 
-Step11- To Login via console paste the download link in the browser. 
-IAM user name-Demouser
-Give Password and click on Sign In
-https://course-master1.signin.aws.amazon.com/console
+**Step 10:  Now Go to Your PC and open the Command prompt  and type-”aws configure”**
+- Provide your Access key Id and Secret Access key which was downloaded in Step6.
 
-Step12- See the AWS Management Console of  “Demouser” 
+**Step11- To Login via console paste the download link in the browser.** 
+- IAM user name-Demouser
+- Give Password and click on Sign In
+- https://course-master1.signin.aws.amazon.com/console
+
+**Step12- See the AWS Management Console of  “Demouser”** 
+
+
 
 5.EC2 Hands On
-EC2 Introduction
-Step1-AWS Console>All Services>Compute>EC2
+---
+### EC2 Introduction
+**Step1-AWS Console>All Services>Compute>EC2**
 
-Step2- Click on Launch instance
+**Step2- Click on Launch instance**
 
-Step3- Select AMI as Amazon Linux2
+**Step3- Select AMI as Amazon Linux2**
 
-Step4- Select Instance Type General purpose t2.micro
- Click Next:Configure Instance Details
+**Step4- Select Instance Type General purpose t2.micro**
+ - Click Next:Configure Instance Details
 
-Step5-  Keep settings default for as of now
-       Click Next :Add storage
+**Step5-  Keep settings default for as of now**
+       - Click Next :Add storage
 
-Step6- Add Storage-Do nothing
-           Click Next:Add Tags
+**Step6- Add Storage-Do nothing**
+           - Click Next:Add Tags
 
-Step7- Add tags :Type Name in key and demo in value.
-           Click on Next:Configure Security Group.
+**Step7- Add tags :Type Name in key and demo in value.**
+           - Click on Next:Configure Security Group.
 
-Step8- Create a new security group and click on add rule
-Add rule for HTTP,Port 80 and SSH ,Port 22 
-Provide security group name as “Demo-SG”
-Click on Review and Launch
+**Step8- Create a new security group and click on add rule**
+- Add rule for HTTP,Port 80 and SSH ,Port 22 
+- Provide security group name as “Demo-SG”
+- Click on Review and Launch
 
-Step9--Click on  launch
-Step10-- Select Create a new key pair
+**Step9--Click on  launch**
 
-Step11- Give key pair name as Demouser
+**Step10-- Select Create a new key pair**
 
-Step12-  Download the key pair and Click on Launch Instances.
+**Step11- Give key pair name as Demouser**
 
-Step13- Launch Status-Your Instance is now Launching.
-Click on Instance id i-0c1625ec53699abdb
+**Step12-  Download the key pair and Click on Launch Instances.**
 
-Step14- Your Instance would take approx 1 min from Instance state Pending to Running.
-After the Status check 2/2 are initialized Instance is ready for use. 
+**Step13- Launch Status-Your Instance is now Launching.**
+- Click on Instance id i-0c1625ec53699abdb
 
-Step15-  Select the instance Demo and click on Connect
+**Step14- Your Instance would take approx 1 min from Instance state Pending to Running.**
+- After the Status check 2/2 are initialized Instance is ready for use. 
 
-Step16- There are 3 options to connect with this instance. We will choose an “EC2 instance connect”.
+**Step15-  Select the instance Demo and click on Connect**
 
-Step17- Click on connect
+**Step16- There are 3 options to connect with this instance. We will choose an “EC2 instance connect”.**
 
-Step18- Now you are connected to EC2
-7. VPC Hands ON
+**Step17- Click on connect**
 
-Default VPC:-
-Step1-  Goto AWS Console>All Services>VPC>VPC Dashboard.
+**Step18- Now you are connected to EC2**
 
-Step2- Click on VPCs-
 
-Step3- See Default subnets-Goto VPcs Dashboard>Subnets
 
-Step4-   Goto VPcs Dashboard>Route Tables
 
-4.1 There are two entries : a. to allow instances within the VPC to talk to each other. b. To allow instances inside the subnet(s) associated with this RT to be able to connect to the internet.
-4.2 The two subnets are implicitly associated with this RT.
+### 7. VPC Hands ON
 
-Step5- VPC Dashboard>Internet Gateway
-This IG is attached with the default VPC.
+### Default VPC:-
 
-Step6- 
-VPC Dashboard>Security>Security Groups
-6.1 All instances associated with this SG can ping/talk to each other.
-6.2 All traffic is allowed out from this SG.
+**Step1-  Goto AWS Console>All Services>VPC>VPC Dashboard.**
 
-Step7- 
-VPC Dashboard>Security>Network Acls
-7.1 Everything (All the traffic) is allowed into this NACL.
-7.2- Everything (All the traffic) is allowed out of this NACL.
+**Step2- Click on VPCs-**
 
-Custom VPC
-Step1- Goto AWS Console>All Services>VPC>Your VPCs>Create VPC
-Click on “Create VPC” button in the Top right corner.
+**Step3- See Default subnets-Goto VPcs Dashboard>Subnets**
 
-Step2- Create VPC
-2.1  Give Name as “Custom-vpc” and give IPv4 CIDR block as “10.0.0.0/16”
-2.2 Scroll down and Click on Create VPC
-2.3 vpc created successfully.Check the details.
+**Step4-   Goto VPcs Dashboard>Route Tables**
 
-2.4   This Custom-vpc has created the following things with this VPC.
-1-Route Table
-1-Security Group
-1-Network ACL
-2.4(a) VPC>Route Tables.See the Custom-vpc Route Table
-2.4(b) VPC>Security groups .See Custom-vpc Security group
+- 4.1 There are two entries : a. to allow instances within the VPC to talk to each other. b. To allow instances inside the subnet(s) associated with this RT to be able to connect to the internet.
+- 4.2 The two subnets are implicitly associated with this RT.
+
+**Step5- VPC Dashboard>Internet Gateway**
+- This IG is attached with the default VPC.
+
+**Step6- VPC Dashboard>Security>Security Groups**
+- 6.1 All instances associated with this SG can ping/talk to each other.
+- 6.2 All traffic is allowed out from this SG.
+
+**Step7- VPC Dashboard>Security>Network Acls**
+- 7.1 Everything (All the traffic) is allowed into this NACL.
+- 7.2- Everything (All the traffic) is allowed out of this NACL.
+
+### Custom VPC
+
+**Step1- Goto AWS Console>All Services>VPC>Your VPCs>Create VPC**
+- Click on “Create VPC” button in the Top right corner.
+
+**Step2- Create VPC**
+- 2.1  Give Name as “Custom-vpc” and give IPv4 CIDR block as “10.0.0.0/16”
+- 2.2 Scroll down and Click on Create VPC
+- 2.3 vpc created successfully.Check the details.
+- 2.4   This Custom-vpc has created the following things with this VPC.
+       1-Route Table
+       1-Security Group
+       1-Network ACL
+- 2.4(a) VPC>Route Tables.See the Custom-vpc Route Table
+- 2.4(b) VPC>Security groups .See Custom-vpc Security group
+
 All instances associated with this SG can ping/talk to each other.
 All traffic is allowed out of this SG.
 
-2.4(c) Custom-vpc NACL
+- 2.4(c) Custom-vpc NACL
 All traffic is allowed into this NACL.
 All traffic is allowed out of this NACL.
 
-Step3- Create Subnet
-3.1  AWS Console>All Services>VPC>Subnets>Create Subnet
-3.2- Give Name as “Public-Subnet” 
+**Step3- Create Subnet**
+- 3.1  AWS Console>All Services>VPC>Subnets>Create Subnet
+- 3.2- Give Name as “Public-Subnet” 
        IPv4 CIDR block as “10.0.1.0/24”
        Click on Create.
-3.3 AWS Console>All Services>VPC>Subnets>Create Subnet
+- 3.3 AWS Console>All Services>VPC>Subnets>Create Subnet
       Give Name as “Private-Subnet” 
        IPv4 CIDR block as “10.0.2.0/24”
        Click on Create.
 
-Step4-Create Internet Gateway
-4.1  Goto AWS Console>All Services>VPC>Internet Gateways-
+**Step4-Create Internet Gateway
+- 4.1  Goto AWS Console>All Services>VPC>Internet Gateways-
        Click on “Create Internet gateway”
-4.2 Type  name as “Custom-IG”
+- 4.2 Type  name as “Custom-IG”
       Click on Create Internet gateway.
-4.3 Internet gateway is created but state is showing “Detached”
-4.4 For attaching it with Custom-vpc select Custom-IG and Click on Actions>Attach to VPC
-4.5  Select Custom-vpc and click on Attach Internet gateway.
-4.6 Internet gateway is attached with Custom-vpc successfully.
+- 4.3 Internet gateway is created but state is showing “Detached”
+- 4.4 For attaching it with Custom-vpc select Custom-IG and Click on Actions>Attach to VPC
+- 4.5  Select Custom-vpc and click on Attach Internet gateway.
+- 4.6 Internet gateway is attached with Custom-vpc successfully.
 
-Step5-Create Route Table
+**Step5-Create Route Table**
+```
 5.1 Goto AWS Console>All Services>VPC>Route Tables
        Route Table ID “rtb-07838fd89b3f87e18” is default Route Table Created with “Custom-vpc”
 5.2 Click on Routes>Edit Routes 
@@ -512,18 +523,20 @@ Step5-Create Route Table
 5.16 Click to Check the option”Enable auto-assign public IPv4 address”
         Click on save.
 5.17  Now Auto-assign public IP is showing as “Yes”
+```
 
-
-Step6-Create Security Group
+**Step6-Create Security Group**
+```
 6.1 AWS Console>All Services>VPC>Security Groups>Create security group
 6.2 Give name as “Custom-SG” and select VPC as Custom-vpc
 6.3  Inbound rules---- In Type select HTTP ,Port 80
        Outbound rules----All Traffic(Not a good practice).
 6.4  Click on Create Security Group
 6.5 Security group”Custom-SG” is created successfully.
+```
 
-Step7-Launch EC2 with Public IP
-
+**Step7-Launch EC2 with Public IP**
+```
 7.1  AWS Console>All Services>EC2>Launch Instance
 7.2 Select AMI as Amazon Linux 2 AMI
 7.3  Select instance Type General purpose,t2.micro
@@ -548,10 +561,10 @@ Click on Continue.
 7.13 Goto EC2 dashboard and select the Custom-ec2 instance.
        See that “Public IPv4 Address” is given for this instance as we enable “Auto-assign     public Ip ”
 7.14 Check the URL and see that it is live.
+```
 
-
-Step8-Launch EC2 with Private IP
-
+**Step8-Launch EC2 with Private IP**
+```
 8.1 Choose AMI-Linux2
 8.2  Choose Instance type-t2.micro
 8.3 Configure Instance -
@@ -564,7 +577,7 @@ Key-name
 Value-Custom-ec2-private
 8.6 Configure security group
 8.7 EC2 instance will be created with no Public IP.
-
+```
 
 
 
