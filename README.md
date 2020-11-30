@@ -1564,40 +1564,42 @@ Provide User name and password for HTTPS Code Commit.
 6.6.Deploying Sample App on a single ec2
 ---
 
-Step1- Launch the Instance
-Open AWS Console>EC2>Launch Instance
+**Step1- Launch the Instance**
+- Open AWS Console>EC2>Launch Instance
 
-Step2- Select AMI linux2
+**Step2- Select AMI linux2**
 
-Step3- Select Instance Type as t2.micro
+**Step3- Select Instance Type as t2.micro**
 
-Step4- Keep all values default beside IAM Role
+**Step4- Keep all values default beside IAM Role**
 
-Step5- Click on Create new IAM role
+**Step5- Click on Create new IAM role**
 
-Step6- Select EC2 and click on NEXT:Permissions tab
+**Step6- Select EC2 and click on NEXT:Permissions tab**
 
-Step7- Search s3 and select s3readonly role
+**Step7- Search s3 and select s3readonly role**
 
-Step8- Next:Review
+**Step8- Next:Review**
 
-Step9- Provide the name of your role
+**Step9- Provide the name of your role**
 
-Step10- Click on add storage
-Step11- Next:Tags key:Name and value is course-master
-Click Next Configure security group
+**Step10- Click on add storage**
 
-Step12- Click on Review and launch
+**Step11- Next:Tags key:Name and value is course-master**
 
-Step13- Click on Launch
+**Click Next Configure security group**
 
-Step14- Select the key pair and Click on Launch Instance
-Instance is running .
+**Step12- Click on Review and launch**
 
-Step15- Now Click on Connect
+**Step13- Click on Launch**
 
-Step16- Do the following steps manually:
+**Step14- Select the key pair and Click on Launch Instance**
+- Instance is running .
 
+**Step15- Now Click on Connect**
+
+**Step16- Do the following steps manually:**
+```
 yum update 
 yum install nmap-ncat 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash - 
@@ -1607,44 +1609,51 @@ git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/node-sample-ap
 cd node-sample-ap
 npm install
 node app.js 
-
-
+```
+```sh
 #yum update -y
-
+```
+```sh
 #yum install nmap-ncat
-
+```
+```sh
 # curl -sL https://rpm.nodesource.com/setup_lts.x | bash - 
-
+```
+```sh
 # yum install nodejs -y
-
+```
+```sh
 #yum install git -y
-
+```
+```sh
 #Git Clone “Code Commit cloning path”
-
+```
+```sh
 Step17- Provide Username and password for code commit HTTPS (Downloaded earlier in Code Commit Introduction To AWS CodeCommit)
-Step18 - #cd node-sample-ap
-
+```
+**Step18 - #cd node-sample-ap**
+```sh
 #ls
 Step19 - #npm install
+```
+**Step20- Now Check the URL of EC2 instance.**
 
-Step20- Now Check the URL of EC2 instance.
-
-Step21- Open in the internet browser
+**Step21- Open in the internet browser**
 
 
 
 6.7 Deploying Sample App on ec2 Fleet -1(ASG Lifecycle)
+---
 
- Step1- Create Launch Configuration with “test-lc” name
+ **Step1- Create Launch Configuration with “test-lc” name**
 
-Step2- Select linux2-AMI by searching its AMI number”ami-03657b56516ab7912”
-       Select instance type t2.micro 
-Now select your instance profile name “CodeDeployDemo-EC2-Instance-Profile”
+**Step2- Select linux2-AMI by searching its AMI number”ami-03657b56516ab7912”**
+       - Select instance type t2.micro 
+       - Now select your instance profile name “CodeDeployDemo-EC2-Instance-Profile”
 
-Step3- Click in Advanced details section and look for user data.
-Copy following user data(remember to edit your region) and paste it in User data as text:
-
-
+**Step3- Click in Advanced details section and look for user data.**
+- Copy following user data(remember to edit your region) and paste it in User data as text:
+```
 #!/bin/bash
 yum update -y && \
 yum install nmap-ncat -y && \
@@ -1661,83 +1670,94 @@ sleep 10 && \
 INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id) && \
 aws autoscaling complete-lifecycle-action --lifecycle-action-result CONTINUE --instance-id $INSTANCE_ID --lifecycle-hook-name test-hook --auto-scaling-group-name test-asg --region us-east-2 || \
 aws autoscaling complete-lifecycle-action --lifecycle-action-result ABANDON --instance-id $INSTANCE_ID --lifecycle-hook-name test-hook --auto-scaling-group-name test-asg --region us-east-2
+```
 
 
+**Step4- Click on Create Launch Configuration**
+- Launch configuration has been created.
 
-Step4- Click on Create Launch Configuration
-Launch configuration has been created.
+**Step5- Now select launch configuration -> click actions  ->  create auto scaling group.**
 
-Step5- Now select launch configuration -> click actions  ->  create auto scaling group.
+**Step6- Give name to auto scaling group as “test-asg” and select launch configuration.**
+- Click Next
+- Select default VPC and default subnets in multiple availability zones.
 
-Step6- Give name to auto scaling group as “test-asg” and select launch configuration.
-Click Next
-Select default VPC and default subnets in multiple availability zones.
+**Step7 -Click Next**
 
-Step7 -Click Next
+**Step8- Select Group size:**
+- Desired capacity -0
+- Minimum Capacity-0
+- Maximum capacity-0
 
-Step8- Select Group size:
-Desired capacity -0
-Minimum Capacity-0
-Maximum capacity-0
+**Step9- Scaling policies-None**
+- Click Next
 
-Step9- Scaling policies-None
-Click Next
+**Step10- Click Next**
 
-Step10- Click Next
+**Step11- Review all the details and click on Create Auto Scaling group**
+- Auto scaling Group “test-asg” has been created.
 
-Step11- Review all the details and click on Create Auto Scaling group
-Auto scaling Group “test-asg” has been created.
+**Step12- Click on auto scaling group>Instance management tab >Create lifecycle hook**
 
-Step12- Click on auto scaling group>Instance management tab >Create lifecycle hook
+**Step13- Type lifecycle hook name as “test-hook”**
+- Lifecycle transition -Instance Launch
+- Heart Beat Time-30 secs 
+- Default Result Continue
 
-Step13- Type lifecycle hook name as “test-hook”
-Lifecycle transition -Instance Launch
-Heart Beat Time-30 secs 
-Default Result Continue
+**Step14- Now Click on auto scaling group and edit group size to desired-1,minimum-1,maximum-1**
 
-Step14- Now Click on auto scaling group and edit group size to desired-1,minimum-1,maximum-1
-
-Step15- Click on update
+**Step15- Click on update**
 
 
-Step16- Monitor the Instances in EC2 Dashboard.
-New Instance will be created.
+**Step16- Monitor the Instances in EC2 Dashboard.**
+- New Instance will be created.
 
-Step17- Goto-EC2>Auto Scaling groups>test-asg
-Lifecycle will show Pending>Pending wait>In service
+**Step17- Goto-EC2>Auto Scaling groups>test-asg**
+- Lifecycle will show Pending>Pending wait>In service
 
-Step18- Check the Instance URL and paste it in the Browser.
-URL is live.
+**Step18- Check the Instance URL and paste it in the Browser.**
+- URL is live.
+
+
 
 6.7 Deploying Sample App on ec2 Fleet -2
-Step19- Now we will edit group size as 2-2-2 in Auto Scaling Group.
-Desired-2
-Maximum-2
-Minimum-2
+---
 
-Step20- Click Update
-After updating the group size one more new instance will be created.
-Lifecycle tab shows the Pending> Pending wait >IN-Service
-Step21- Check Ec2 dashboard
-New instance is running in EC2 Dashboard
+**Step19- Now we will edit group size as 2-2-2 in Auto Scaling Group.**
+- Desired-2
+- Maximum-2
+- Minimum-2
 
-Step22- Copy the Ip Address of Instance and validate the application
+**Step20- Click Update**
+
+- After updating the group size one more new instance will be created.
+- Lifecycle tab shows the Pending> Pending wait >IN-Service
+
+**Step21- Check Ec2 dashboard**
+- New instance is running in EC2 Dashboard
+
+**Step22- Copy the Ip Address of Instance and validate the application**
+
+
+
 6.9 Deploying Sample App on Elastic Beanstalk
+---
 
-Step1- Goto AWS console>All services>Elastic Beanstalk
+**Step1- Goto AWS console>All services>Elastic Beanstalk**
 
-Step2-  click on Create Application
+**Step2-  click on Create Application**
 
-Step3-Click on Create new Environment
-Provide application name-”sample app”
+**Step3-Click on Create new Environment**
+- Provide application name-”sample app”
 
-Step4-- In Platform section select node js
-            In Application code select Sample Application
+**Step4-- In Platform section select node js**
+            -In Application code select Sample Application
 
-Step5- Click on Create Application
-Creating SampleApp-env started----
+**Step5- Click on Create Application**
+  - Creating SampleApp-env started----
 
-Step6-  Launches an environment named GettingStartedApp-env with these AWS resources:
+**Step6-  Launches an environment named GettingStartedApp-env with these AWS resources:**
+```
 ●	An Amazon Elastic Compute Cloud (Amazon EC2) instance (virtual machine)
 ●	An Amazon EC2 security group
 ●	An Amazon Simple Storage Service (Amazon S3) bucket (by what name?)
@@ -1748,14 +1768,15 @@ Step6-  Launches an environment named GettingStartedApp-env with these AWS resou
 ●	ASG
 ●	Target Group
 ●	ALB
+ ```
  
-Step7-- Click on environments and click on sampleApp-env
+**Step7-- Click on environments and click on sampleApp-env**
 
-Step8--- Health is ok means that application is deployed and launched successfully.
+**Step8--- Health is ok means that application is deployed and launched successfully.**
 
-Step9---  Click on Go to environment
+**Step9---  Click on Go to environment**
 
-Step10-  Check your application’s web page
+**Step10-  Check your application’s web page**
 
 Sample application deployed successfully.
 Don’t forget to delete your environment to avoid the charges.
@@ -1765,61 +1786,63 @@ Don’t forget to delete your environment to avoid the charges.
 
 
 Section 7 : Deploying Sample App on AWS (With CI/CD)
+---
 
 7.2 Setting up ec2 Instance 
-See- 6.3 Setting-up ec2 Instance
+---
+**See- 6.3 Setting-up ec2 Instance**
 
 7.4 Creating CodeBuild Project
-Step1.Open the AWS CodeBuild console at https://console.aws.amazon.com/codesuite/codebuild/home
+---
 
-Step2. Click on “Create Build Project” and Fill the following sections-
- (a)Project Configuration--Type Project Name as “node-sample-app”
-(b)Source>Source 1-Primary Section>Select Source Provider “AWS Code Commit” from drop down menu and
- fill the repository name “node-sample-ap” and
-Reference Type select “Branch” and Branch as “Master”
+**Step1.Open the AWS CodeBuild console at https://console.aws.amazon.com/codesuite/codebuild/home**
 
-Step3:Environment Section--Select Environment image Managed image and
- Operating system “Amazon Linux 2”
- Run Time as “Standard”,
-image as aws/codebuild/amazonlinux2-x86_64-standard:3.0 and
- image version “always use the latest image for this runtime version”
-Environment Type :”Linux”
+**Step2. Click on “Create Build Project” and Fill the following sections-**
+ - (a)Project Configuration--Type Project Name as “node-sample-app”
+ - (b)Source>Source 1-Primary Section>Select Source Provider “AWS Code Commit” from drop down menu and
+ - fill the repository name “node-sample-ap” and
+ - Reference Type select “Branch” and Branch as “Master”
 
-Step4-Service Role--If you do not have service role  choose “New Service Role” type      service role name - “codebuild-node-sample-app-service-role”
-     If you have a service role which was created earlier then choose existing service role.
+**Step3:Environment Section--**
+- Select Environment image -Managed image and
+- Operating system- “Amazon Linux 2”
+- Run Time as- “Standard”,
+- image as -aws/codebuild/amazonlinux2-x86_64-standard:3.0 and
+- image version -“always use the latest image for this runtime version”
+- Environment Type- :”Linux”
 
-Step5-
+**Step4-Service Role--If you do not have service role  choose “New Service Role” type      service role name - “codebuild-node-sample-app-service-role”
+     If you have a service role which was created earlier then choose existing service role.**
 
-Buildspec section:
+**Step5-Buildspec section:**
 Build specifications select “Use a buildspec file”
 
-Step6-
-
-Artifacts Section:-- To store build output artifacts choose  S3 in type,
-Bucket name(see below for bucket creation) as “node-sample-ap-output-bucket”
-Select Zip in artifact packaging
-If you do not want your build artifacts encrypted select “Disable artifacts encryption”
+**Step6-Artifacts Section:-- To store build output artifacts choose  S3 in type,**
+- Bucket name(see below for bucket creation) as “node-sample-ap-output-bucket”
+- Select Zip in artifact packaging
+- If you do not want your build artifacts encrypted select “Disable artifacts encryption”
 
 
-Step7- Logs section
+**Step7- Logs section**
+- Choose logs you want to create select cloudwatch logs
+- Type group name as “node-sample-ap-logs”
 
-Choose logs you want to create select cloudwatch logs
-Type group name as “node-sample-ap-logs”
 
 
-Step8
-7.6-Building Sample App
-Goto AWS Console>Developers Tools
-Click on Create build project >Start Build
-After Clicking Start Build it will show all the steps done in the previous step.
+**Step8-Building Sample App**
+---
 
-Check build configuration Select Build type as “single build”
-Branch -master
+- Goto AWS Console>Developers Tools
+- Click on Create build project >Start Build
+- After Clicking Start Build it will show all the steps done in the previous step.
 
-Review it .Choose start build
+- Check build configuration Select Build type as “single build”
+- Branch -master
 
-Step 9-You can see the phase details for monitoring the ongoing build-
+- Review it .Choose start build
 
+**Step 9-You can see the phase details for monitoring the ongoing build-**
+```
  Check the status of every step of all phases in phase details-
 SUBMITTED
 QUEUED
@@ -1831,49 +1854,61 @@ BUILD
 POST_BUILD
 FINALIZING
 COMPLETED.
+```
+- You can also see the build logs by clicking on build logs
 
-You can also see the build logs by clicking on build logs
-
-For checking output open S3 with this path s3://node-sample-ap-output-bucket/node-sample-ap
+- For checking output open S3 with this path s3://node-sample-ap-output-bucket/node-sample-ap
 
 
-Step10-You can check the CloudWatchlogs by selecting AWS Services>Cloudwatch>Logs>Log groups>node-sample-ap
-
-Choose node-sample-ap-logs
+**Step10-You can check the CloudWatchlogs by selecting AWS Services>Cloudwatch>Logs>Log groups>node-sample-ap**
+-Choose node-sample-ap-logs
 
 
 
 
 
 7.8 Creating CodeDeploy Application
-Step1- Open the AWS CodeDeploy console at https://console.aws.amazon.com/codesuite/codedeploy/home
-Get started with AWS CodeDeploy by creating your first deployment application
-Click on CodeDeploy>Create Application
-Step2- Enter Application name code-sample-ap-deploy in Application Configuration Section
-And Choose Compute platform as EC2/On-premises
-Step3- Click on Create application
-It will show that application created
-In the next step choose Create deployment group under deployment groups section.
-Give the name “ node-sample-ap-group” in the deployment group name section.
+---
+**Step1- Open the AWS CodeDeploy console at https://console.aws.amazon.com/codesuite/codedeploy/home**
+- Get started with AWS CodeDeploy by creating your first deployment application
+- Click on CodeDeploy>Create Application
+
+**Step2- Enter Application name code-sample-ap-deploy in Application Configuration Section And Choose Compute platform as EC2/On-premises**
+
+**Step3- Click on Create application**
+- It will show that application created
+- In the next step choose Create deployment group under deployment groups section.
+- Give the name “ node-sample-ap-group” in the deployment group name section.
 
 7.10 Deploying Sample App on a single ec2
+---
+**Step1- Open the AWS CodeDeploy console at https://console.aws.amazon.com/codesuite/codedeploy/home**
+- Get started with AWS CodeDeploy by creating your first deployment application
+- Click on CodeDeploy>Create Application
 
+**Step2- Enter Application name code-sample-ap-deploy in Application Configuration Section And Choose Compute platform as EC2/On-premises**
 
-Step4-
-Provide service role in Service Role section: 
+**Step3- Click on Create application**
+- It will show that application created
+- In the next step choose Create deployment group under deployment groups section.
+- Give the name “ node-sample-ap-group” in the deployment group name section.
 
-Step5-Now come to AWS Code Deploy>deployment group
-Next Deployment type choose In-Place and select Amazon Ec2 instances in Environment configuration.
+**Step4-Provide service role in Service Role section:** 
 
-Step6-In tags select key--name and value---deploy 
-Above tags values  were given during the creation of ec2 instances in tags section..
-Choose never in AWS Systems Manager section:
-In Deployment settings you can select according to your choice i am using CodeDeployDefault:Allatonce.
-In Load Balancer deselect Load Balancer for as of now.(will do it later in next session)
+**Step5-Now come to AWS Code Deploy>deployment group**
+- Next Deployment type choose In-Place and select Amazon Ec2 instances in Environment configuration.
 
-Step7-Setting-up Ec2-Instance with Code deploy agent and IAM role attached for S3
-AWS Console>All services>EC2
+**Step6-In tags select key--name and value---deploy**
+- Above tags values  were given during the creation of ec2 instances in tags section..
+- Choose never in AWS Systems Manager section:
+- In Deployment settings you can select according to your choice i am using CodeDeployDefault:Allatonce.
+- In Load Balancer deselect Load Balancer for as of now.(will do it later in next session)
+
+**Step7-Setting-up Ec2-Instance with Code deploy agent and IAM role attached for S3**
+- AWS Console>All services>EC2
+
 Refer below script for user data.
+```
 User Data Script :-
 #!/bin/bash
 sudo yum update -y
@@ -1889,26 +1924,35 @@ sudo service codedeploy-agent start
 # install pm2 module globaly
 sudo npm install -g pm2
 sudo pm2 update
+```
 
-Step9-Now Come back to Deployment Group
-Provide Name,service role
-Deployment type-In-place,Env-config---Ec2 instances
-Aws systems manager --never
-Deployment settings-CodeDeployAllatOnce
-Click on Create deployment group.
-Step10-Deployment Group created now click on Create deployment.
-See the deployment settings.
-Deployment group node-sample-ap-group is taken automatically
-Select revision type:My Application is stored in S3
-Give revision location from your s3 Build artifacts output bucket
-AWS Console>S3>Buckets>node-sample-ap-output-bucket
-Click on bucket open revision location >click on artifacts>copy path
-Paste this path to revision location option and select .ZIP from dropdown in next row.
+**Step9-Now Come back to Deployment Group**
+- Provide Name,service role
+- Deployment type-In-place,Env-config---Ec2 instances
+- Aws systems manager --never
+- Deployment settings-CodeDeployAllatOnce
+- Click on Create deployment group.
 
-Step11-Click on Create Deployment
-Deployment created successfully.
+**Step10-Deployment Group created now click on Create deployment.**
+- See the deployment settings.
 
-Step12-View events in Deployment Lifecycle Events Section.
+- Deployment group node-sample-ap-group is taken automatically
+
+- Select revision type:My Application is stored in S3
+
+- Give revision location from your s3 Build artifacts output bucket
+
+- AWS Console>S3>Buckets>node-sample-ap-output-bucket
+
+- Click on bucket open revision location >click on artifacts>copy path
+
+- Paste this path to revision location option and select .ZIP from dropdown in next row.
+
+**Step11-Click on Create Deployment**
+- Deployment created successfully.
+
+**Step12-View events in Deployment Lifecycle Events Section.**
+```
 APPLICATION STOP
 DOWNLOAD BUNDLE
 BEFORE INSTALL
@@ -1916,12 +1960,22 @@ INSTALL
 AFTER INSTALL
 APPLICATION START
 VALIDATE SERVICE
-Deployment is completed.
-Check Ec2 Instance URL and test the Application.
-Copy the IP Address of the Ec2-Instance and paste in the browser and Hit Enter.
-Sample app is running.Application is deployed successfully.
+```
+- Deployment is completed.
+
+- Check Ec2 Instance URL and test the Application. 
+
+- Copy the IP Address of the Ec2-Instance and paste in the browser and Hit Enter.
+
+- Sample app is running.Application is deployed successfully.
+
+
+
+
+
 
 7.11 Deploying Sample App on ec2 Fleet -1
+-----
 
 Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.
 Step2-Create Application
