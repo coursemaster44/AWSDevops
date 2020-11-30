@@ -2830,137 +2830,143 @@ Step11 -Run #npm install
 
 10.8 Deploying Sample App on a ec2 fleet-2
 -----
-Step1.Source code is uploaded in the repository Myrepo in AWS Commit step.
-Step2- CodeBuild
-2.1 AWS Console>All services>CodeBuild>Build projects>create Build project
-Project name-DynamoDBbuild
-2.2 Source-AWS CodeCommit
-Repository-MYRepo
-Reference Type-Branch
-Branch-master
+**Step1.Source code is uploaded in the repository Myrepo in AWS Commit step**
 
-2.3 Environment
-Environment image-Managed image
-Operating system-Amazon linux 2
-Runtime-Standard
-Image-standard 3.0
+**Step2- CodeBuild**
+**2.1 AWS Console>All services>CodeBuild>Build projects>create Build project**
+- Project name-DynamoDBbuild
+**2.2 Source-AWS CodeCommit**
+- Repository-MYRepo
+- Reference Type-Branch
+- Branch-master
 
-2.4
-Service role-new service role
-Role name-Automatically taken
-Buildspec-Use a buildspec file
+**2.3 Environment**
+- Environment image-Managed image
+- Operating system-Amazon linux 2
+- Runtime-Standard
+- Image-standard 3.0
 
-2.5 Artifacts -
-Type-Amazon S3
-Bucket name-”S3 Bucket Name”
+**2.4**
+- Service role-new service role
+- Role name-Automatically taken
+- Buildspec-Use a buildspec file
 
-2.6 Artifacts packaging -Zip
-Select -Disable artifact encryption
+**2.5 Artifacts -**
+- Type-Amazon S3
+- Bucket name-”S3 Bucket Name”
 
-2.7 Click Create build project
+**2.6 Artifacts packaging -Zip**
+- Select -Disable artifact encryption
 
-2.8 project created 
-     Click on start build 
+**2.7 Click Create build project**
 
-2.9 Build Configuration
+**2.8 project created** 
+     - Click on start build 
 
-2.10 Source
-Click on start build
+**2.9 Build Configuration**
 
-2.11 Build started
-2.12 see phase details
+**2.10 Source**
+- Click on start build
 
+**2.11 Build started**
 
-2.13 check the Artifacts in S3
-Build is completed successfully now move to Deployment
+**2.12 see phase details**
 
-Step3- CodeDeploy
+**2.13 check the Artifacts in S3**
+- Build is completed successfully now move to Deployment
 
-3.1  AWS Console>All services>CodeDeploy>Applications>create application
-Give name-DynamoDBbuild
-Compute platform-Ec2
-Click on Create application
-3.2 Application created-in order to create a new deployment,you must first create a deployment group
+**Step3- CodeDeploy**
 
-3.3 Give application name
-    Give deployment group name
-   
-Select service role for CodeDeploy-Demo(for S3 access)
-There is a need for a Launch Configuration and Auto scaling group for this deployment so creating the same.
+**3.1  AWS Console>All services>CodeDeploy>Applications>create application**
+- Give name-DynamoDBbuild
+- Compute platform-Ec2
+- Click on Create application
+**3.2 Application created-in order to create a new deployment,you must first create a deployment group**
 
-3.4 
-Deployment type-In-place
-Environment configuration-Select Amazon EC2 Auto Scaling groups
+**3.3 Give application name**
+    - Give deployment group name
+   - Select service role for CodeDeploy-Demo(for S3 access)
+   - There is a need for a Launch Configuration and Auto scaling group for this deployment so creating the same.
 
+**3.4** 
+- Deployment type-In-place
+- Environment configuration-Select Amazon EC2 Auto Scaling groups
 
-3.5  Deployment settings-CodeDeployAllAtOnce
-Load Balancer-Select enable load balancing and select Application load balancer
-Choose target group
-Click create deployment group.
-3.5.1 create Load balancer and target group
-AWS Console>All services>EC2>Load Balancing>load balancers>create load balancer
-3.5.2 Select Application Load balancer
-3.5.3 Give Name
-Scheme-internet facing
-IP address type-ipv4
-Listeners-HTTP,3000
+**3.5  Deployment settings-CodeDeployAllAtOnce**
+- Load Balancer-Select enable load balancing and select Application load balancer
+- Choose target group
+- Click create deployment group.
 
-3.5.4 Availability zone-select vpc default and select 2 AZs
-3.5.5 Select security group
-3.5.6 Configure routing
-Target group-new target group
-Give name
-protocol-HTTP
-Port-3000
-Click Next Register Targets
-3.5.7 Click Create
-3.5.8 See that Load Balancer state is in Provisioning
-It Takes some time to become active
+**3.5.1 create Load balancer and target group**
+- AWS Console>All services>EC2>Load Balancing>load balancers>create load balancer
 
+**3.5.2 Select Application Load balancer**
 
-3.6 Deployment group created
- Click Create Deployment
-3.7 Give revision location(Copy it from S3 Artifacts location )
-Revision file type-Zip
+**3.5.3 Give Name**
+- Scheme-internet facing
+- IP address type-ipv4
+- Listeners-HTTP,3000
 
-3.8 Click on Create Deployment
+**3.5.4 Availability zone-select vpc default and select 2 AZs**
 
+**3.5.5 Select security group**
+
+**3.5.6 Configure routing**
+
+**Target group-new target group**
+- Give name
+- protocol-HTTP
+- Port-3000
+- Click Next Register Targets
+
+**3.5.7 Click Create**
+
+**3.5.8 See that Load Balancer state is in Provisioning**
+- It Takes some time to become active
 
 
-3.9 Deployment Needs Instances for deployment
- Goto  AWS>Services>EC2>AutoScaling groups>select group and edit
-Editing Auto Scaling group Policy to Desired-2,Min-2,Max-2
+**3.6 Deployment group created**
+ - Click Create Deployment
+ 
+**3.7 Give revision location(Copy it from S3 Artifacts location )**
+- Revision file type-Zip
 
-3.10 Goto EC2 Dashboard and see that 2 new instances are launching-
-3.11 Check the Target Group for Healthy instances AWS>EC2>Target Groups
-3.12 Goto Step 3.8 and click on create deployment
-       Deployment started on Just launched instances.
+**3.8 Click on Create Deployment**
 
-3.13 Monitor the deployment by Clicking on Events-View events
-3.14 Copy DNS of Application load balancer and paste it in browser
-3.15 See that the application is  running-
+**3.9 Deployment Needs Instances for deployment**
+ - Goto  AWS>Services>EC2>AutoScaling groups>select group and edit
+- Editing Auto Scaling group Policy to Desired-2,Min-2,Max-2
 
-Step4- DynamoDB-Postman
- 4.1- Open the Postman tool
-4.2 GUI of Postman tool
-4.3- 
-             Click  on New Collection
-              Name-Ec2
-              Click on Create and create requests for-Create Table,Insert Data,read        Data,update Data,Delete Item,Delete table
+**3.10 Goto EC2 Dashboard and see that 2 new instances are launching-**
 
-4.4- Click on three dots  … >Add request
-4.5 
-Name- Create Table 
-Save to Ec2
+**3.11 Check the Target Group for Healthy instances AWS>EC2>Target Groups**
 
-Click on request created Create Table
-               Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/createTable
-                Select Body>raw>json>paste the following data.
-                
-          
+**3.12 Goto Step 3.8 and click on create deployment**
+      -  Deployment started on Just launched instances.
 
+**3.13 Monitor the deployment by Clicking on Events-View events**
 
+**3.14 Copy DNS of Application load balancer and paste it in browser
+
+**3.15 See that the application is  running-**
+
+**Step 4- Open the Postman tool**
+
+**Step 4.1-**
+             -  Click  on New Collection
+             -  Name-Ec2
+             -  Click on Create and create requests for-Create Table,Insert Data,read Data,update Data,Delete Item,Delete table
+
+**Step 4.2- Click on three dots  … >Add request**
+
+**Step 4.3** - Name- Create Table 
+         - Save to Ec2
+
+- Click on request created Create Table
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/CreateTable
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName" : "Movies",
     "KeySchema": [       
@@ -2976,18 +2982,18 @@ Click on request created Create Table
         "WriteCapacityUnits": 1
     }
 }
-
+```
   
-4.6 Click on SEND
-4.7
-Check the Table created in DynamoDB. 
-Goto -AWS Console>DynamoDB>Tables>Movies(just created)
-4.8- new request for Insert Data
-Click on request created Insert data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/insertData
-                Select Body>raw>json>paste the following data.
+**4.4 Click on SEND**
+**4.5 Check the Table created in DynamoDB.** 
+- Goto -AWS Console>DynamoDB>Tables>Movies(just created)
 
+**Step 4.6 - new request for Insert Data** 
+- Click on request created Insert data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/insertData
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName":"Movies",
     "Item":{
@@ -2999,40 +3005,45 @@ Click on request created Insert data
         }
     }
 }
-"New item added successfully"
-Check for added item in DynamoDB
-AWS Console>All services>DynamoDB>Tables>Items
-“Kgf Chapter 2” is added
-4.9- new request for ReadData
-Click on request created Read data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/readData
-                Select Body>raw>json>paste the following data.
-4.10
-Check in DynamoDB also
-4.11 
-New request for UpdateData
-Click on request created Update data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/updateData
-                Select Body>raw>json>paste the following data.
- AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
-4.12
+```
+- "New item added successfully"
+- Check for added item in DynamoDB
+- AWS Console>All services>DynamoDB>Tables>Items
+- “Kgf Chapter 2” is added
 
-New request for deleteItem
-Click on request created deleteItem
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteItem
-                Select Body>raw>json>paste the following data.
-4.13 Check in DynamoDB
-4.14
+**Step 4.7- new request for ReadData** 
+- Click on request created Read data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/ReadData
+- Select Body>raw>json>paste the following data.
 
-New request for Delete Table
-Click on request created Delete Table
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteTable
-                Select Body>raw>json>paste the following data.
-Table is Deleted.
+**Step 4.8 Check in DynamoDB also**
+
+
+**Step 4.9- New request for UpdateData**
+- Click on request created Update data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/updateData
+- Select Body>raw>json>paste the following data.
+ - AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
+
+**Step 4.10- New request for deleteItem**
+                - Click on request created deleteItem
+                - Select Post in drop-down menu
+                - Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteItem
+                - Select Body>raw>json>paste the following data.
+
+
+**Step4.11 Check in DynamoDB**
+
+**Step4.12-New request for Delete Table**
+                - Click on request created Delete Table
+                - Select Post in drop-down menu
+                - Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteTable
+                - Select Body>raw>json>paste the following data.
+- Table is Deleted.
+
+
 
 
 
@@ -3044,6 +3055,7 @@ Table is Deleted.
 
 
 10.9 Deploying Sample App on Elastic Beanstalk
+-------
 Step1- Goto AWS Console>All Services>Elastic Beanstalk>Create Application
 Click on Create Application
 Application name-NewApp
