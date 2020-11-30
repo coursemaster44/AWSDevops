@@ -3200,149 +3200,166 @@ Section 11 : Deploying Sample App With CRUD Functionality on AWS ( With CI/CD)
 -----
 
 11.2 Setting up ec2 Instance 
-Step1 -AWS Console>All Services>EC2 Dashboard>Launch Instance
-Setting up ec2 instance with following  IAM Role-
-AmazonS3FullAccess
-AmazonDynamoDBfullAccess
-AmazonSSMFullAccess
+---
+**Step1 -AWS Console>All Services>EC2 Dashboard>Launch Instance**
+
+- Setting up ec2 instance with following  IAM Role-
+- AmazonS3FullAccess
+- AmazonDynamoDBfullAccess
+- AmazonSSMFullAccess
 
 11.3 Creating CodeBuild Project-
+-----
 11.4 Building Sample App-
-Step1.Source code is uploaded in the repository Myrepo in AWS Commit step.
-Step2- CodeBuild
-2.1 AWS Console>All services>CodeBuild>Build projects>create Build project
-Project name-DynamoDBbuild
-2.2 Source-AWS CodeCommit
+--------
+**Step1.Source code is uploaded in the repository Myrepo in AWS Commit step.**
+**Step2- CodeBuild**
+**Step 2.1 AWS Console>All services>CodeBuild>Build projects>create Build project**
+- Project name-DynamoDBbuild
+
+**Step2.2 Source-AWS CodeCommit**
 Repository-MYRepo
 Reference Type-Branch
 Branch-master
 
-2.3 Environment
-Environment image-Managed image
-Operating system-Amazon linux 2
-Runtime-Standard
-Image-standard 3.0
+**Step2.3 Environment**
+- Environment image-Managed image
+- Operating system-Amazon linux 2
+- Runtime-Standard
+- Image-standard 3.0
 
-2.4
-Service role-new service role
-Role name-Automatically taken
-Buildspec-Use a buildspec file
+**Step2.4**
+- Service role-new service role
+- Role name-Automatically taken
+- Buildspec-Use a buildspec file
 
-2.5 Artifacts -
-Type-Amazon S3
-Bucket name-”S3 Bucket Name”
+**Step2.5 Artifacts -**
+- Type-Amazon S3
+- Bucket name-”S3 Bucket Name”
 
-2.6 Artifacts packaging -Zip
-Select -Disable artifact encryption
+**Step2.6 Artifacts packaging -Zip**
+- Select -Disable artifact encryption
 
-2.7 Click Create build project
+**Step2.7 Click Create build project**
 
-2.8 project created 
-     Click on start build 
+**Step2.8 project created**
+     - Click on start build 
 
-2.9 Build Configuration
+**2.9 Build Configuration**
 
-2.10 Source
-Click on start build
+**2.10 Source**
+- Click on start build
 
-2.11 Build started
-2.12 see phase details
+**2.11 Build started**
+
+**2.12 see phase details**
 
 
-2.13 check the Artifacts in S3
+**2.13 check the Artifacts in S3**
+
 Build is completed successfully now move to Deployment
 
 11.6 Creating CodeDeploy Application
-Step1- Open the AWS CodeDeploy console at https://console.aws.amazon.com/codesuite/codedeploy/home
-Get started with AWS CodeDeploy by creating your first deployment application
-Click on CodeDeploy>Create Application
-Step2- Enter Application name code-sample-ap-deploy in Application Configuration Section
-And Choose Compute platform as EC2/On-premises
-Step3- Click on Create application
-It will show that application created
-In the next step choose Create deployment group under deployment groups section.
-Give the name “ node-sample-ap-group” in the deployment group name section.
+-----
+
+**Step1- Open the AWS CodeDeploy console at https://console.aws.amazon.com/codesuite/codedeploy/home**
+- Get started with AWS CodeDeploy by creating your first deployment application
+- Click on CodeDeploy>Create Application
+
+**Step2- Enter Application name code-sample-ap-deploy in Application Configuration Section**
+- And Choose Compute platform as EC2/On-premises
+
+**Step3- Click on Create application**
+- It will show that application created
+- In the next step choose Create deployment group under deployment groups section.
+- Give the name “ node-sample-ap-group” in the deployment group name section.
 
 11.8 Deploying sample App on single Ec2
-Step1.CodeCommit -Source code is uploaded in the repository Myrepo in AWS Commit step.
-Step2- CodeBuild
-2.1 AWS Console>All services>CodeBuild>Build projects>create Build project
-Project name-DynamoDBbuild
-2.2 Source-AWS CodeCommit
-Repository-MYRepo
-Reference Type-Branch
-Branch-master
+----
 
-2.3 Environment
-Environment image-Managed image
-Operating system-Amazon linux 2
-Runtime-Standard
-Image-standard 3.0
+**Step1.CodeCommit -Source code is uploaded in the repository Myrepo in AWS Commit step.**
+**Step2- CodeBuild**
+**2.1 AWS Console>All services>CodeBuild>Build projects>create Build project**
+- Project name-DynamoDBbuild
+**2.2 Source-AWS CodeCommit**
+- Repository-MYRepo
+- Reference Type-Branch
+- Branch-master
 
-2.4
-Service role-new service role
-Role name-Automatically taken
-Buildspec-Use a buildspec file
+**2.3 Environment**
+- Environment image-Managed image
+- Operating system-Amazon linux 2
+- Runtime-Standard
+- Image-standard 3.0
 
-2.5 Artifacts -
-Type-Amazon S3
-Bucket name-”S3 Bucket Name”
+**Step-2.4**
+- Service role-new service role
+- Role name-Automatically taken
+- Buildspec-Use a buildspec file
 
-2.6 Artifacts packaging -Zip
-Select -Disable artifact encryption
+**2.5 Artifacts -**
+- Type-Amazon S3
+- Bucket name-”S3 Bucket Name”
 
-2.7 Click Create build project
+**2.6 Artifacts packaging -Zip**
+- Select -Disable artifact encryption
 
-2.8 project created 
-     Click on start build 
+**2.7 Click Create build project**
 
-2.9 Build Configuration
+**2.8 project created** 
+     - Click on start build 
 
-2.10 Source
-Click on start build
+**2.9 Build Configuration**
 
-2.11 Build started
-2.12 see phase details
+**2.10 Source**
+- Click on start build
 
+**2.11 Build started**
+ 
+ **2.12 see phase details**
 
-2.13 check the Artifacts in S3
-Build is completed successfully now move to Deployment
+**2.13 check the Artifacts in S3**
 
-Step3- CodeDeploy
+- Build is completed successfully now move to Deployment
 
-3.1  AWS Console>All services>CodeDeploy>Applications>create application
-Give name-DynamoDBbuild
-Compute platform-Ec2
-Click on Create application
-3.2 Application created-in order to create a new deployment,you must first create a deployment group
+**Step3- CodeDeploy**
+**3.1  AWS Console>All services>CodeDeploy>Applications>create application**
+- Give name-DynamoDBbuild
+- Compute platform-Ec2
+- Click on Create application
 
-3.3 Give application name
-    Give deployment group name
-In tags select key--name and value---deploy 
-Above tags values  were given during the creation of ec2 instances in tags section..
-3.4 Choose never in AWS Systems Manager section:
-3.5 In Deployment settings you can select according to your choice i am using CodeDeployDefault:Allatonce.
+**3.2 Application created-in order to create a new deployment,you must first create a deployment group**
 
+**3.3 Give application name**
+    - Give deployment group name
+- In tags select key--name and value---deploy 
+- Above tags values  were given during the creation of ec2 instances in tags section..
 
-3.6 In Load Balancer deselect Load Balancer for as of now.(will do it later in next session)
+**3.4 Choose never in AWS Systems Manager section:**
 
-3.7 Click on Create deployment group.
+**3.5 In Deployment settings you can select according to your choice i am using CodeDeployDefault:Allatonce.**
 
-3.8 -Deployment Group created now click on Create deployment.
-See the deployment settings.
-Deployment group node-sample-ap-group is taken automatically
-3.9 Select revision type:My Application is stored in S3
-Give revision location from your s3 Build artifacts output bucket(See below.)
+**3.6 In Load Balancer deselect Load Balancer for as of now.(will do it later in next session)
 
-3.10 AWS Console>S3>Buckets>node-sample-ap-output-bucket
-If you don't know creating of S3 Bucket Click on How To Create S3 Bucket:
+**3.7 Click on Create deployment group.**
 
-Click on bucket open revision location >click on artifacts>copy path
-Paste this path to revision location option and select .ZIP from dropdown in next row.
-3.11-Click on Create Deployment
-Deployment created
-3.12-View events in Deployment Lifecycle Events Section.
+**3.8 -Deployment Group created now click on Create deployment.**
+- See the deployment settings.
+- Deployment group node-sample-ap-group is taken automatically
 
+**3.9 Select revision type:My Application is stored in S3**
+- Give revision location from your s3 Build artifacts output bucket(See below.)
+
+**3.10 AWS Console>S3>Buckets>node-sample-ap-output-bucket**
+- If you don't know creating of S3 Bucket Click on How To Create S3 Bucket:
+- Click on bucket open revision location >click on artifacts>copy path
+- Paste this path to revision location option and select .ZIP from dropdown in next row.
+
+**3.11-Click on Create Deployment**
+- Deployment created
+
+**3.12-View events in Deployment Lifecycle Events Section.**
+```
 APPLICATION STOP
 DOWNLOAD BUNDLE
 BEFORE INSTALL
@@ -3350,11 +3367,11 @@ INSTALL
 AFTER INSTALL
 APPLICATION START
 VALIDATE SERVICE
-
-Deployment is completed.
-Check Ec2 Instance URL and test the Application.
-Copy the IP Address of the Ec2-Instance and paste in the browser and Hit Enter.
-Application is deployed successfully.
+```
+- Deployment is completed.
+- Check Ec2 Instance URL and test the Application.
+- Copy the IP Address of the Ec2-Instance and paste in the browser and Hit Enter.
+- Application is deployed successfully.
 
 
 
@@ -3363,112 +3380,114 @@ Application is deployed successfully.
 
 
 11.9 Deploying Sample App on ec2 fleet-1
-Step1.CodeCommit-Source code is uploaded in the repository Myrepo in AWS Commit step.
-Step2- CodeBuild
-2.1 AWS Console>All services>CodeBuild>Build projects>create Build project
-Project name-DynamoDBbuild
-2.2 Source-AWS CodeCommit
-Repository-MYRepo
-Reference Type-Branch
-Branch-master
+----
+**Step1.Source code is uploaded in the repository Myrepo in AWS Commit step.**
 
-2.3 Environment
-Environment image-Managed image
-Operating system-Amazon linux 2
-Runtime-Standard
-Image-standard 3.0
+**Step2- CodeBuild**
+**2.1 AWS Console>All services>CodeBuild>Build projects>create Build project**
+- Project name-DynamoDBbuild
+**2.2 Source-AWS CodeCommit**
+- Repository-MYRepo
+- Reference Type-Branch
+- Branch-master
 
-2.4
-Service role-new service role
-Role name-Automatically taken
-Buildspec-Use a buildspec file
+**2.3 Environment**
+- Environment image-Managed image
+- Operating system-Amazon linux 2
+- Runtime-Standard
+- Image-standard 3.0
 
-2.5 Artifacts -
-Type-Amazon S3
-Bucket name-”S3 Bucket Name”
+**2.4-Role**
+- Service role-new service role
+- Role name-Automatically taken
+- Buildspec-Use a buildspec file
 
-2.6 Artifacts packaging -Zip
-Select -Disable artifact encryption
+**2.5 Artifacts -**
+- Type-Amazon S3
+- Bucket name-”S3 Bucket Name”
 
-2.7 Click Create build project
+**2.6 Artifacts packaging -Zip**
+- Select -Disable artifact encryption
 
-2.8 project created 
-     Click on start build 
+**2.7 Click Create build project**
 
-2.9 Build Configuration
+**2.8 project created** 
+     - Click on start build 
 
-2.10 Source
-Click on start build
+**2.9 Build Configuration**
 
-2.11 Build started
-2.12 see phase details
+**2.10 Source**
+- Click on start build
+
+**2.11 Build started**
+
+**2.12 see phase details**
 
 
-2.13 check the Artifacts in S3
-Build is completed successfully now move to Deployment
+**2.13 check the Artifacts in S3**
+- Build is completed successfully now move to Deployment
 
-Step3- CodeDeploy
+**Step3- CodeDeploy**
 
-3.1  AWS Console>All services>CodeDeploy>Applications>create application
-Give name-DynamoDBbuild
-Compute platform-Ec2
-Click on Create application
-3.2 Application created-in order to create a new deployment,you must first create a deployment group
+**3.1  AWS Console>All services>CodeDeploy>Applications>create application**
+- Give name-DynamoDBbuild
+- Compute platform-Ec2
+- Click on Create application
 
-3.3 Give application name
-    Give deployment group name
+**3.2 Application created-in order to create a new deployment,you must first create a deployment group**
+
+**3.3 Give application name**
+    - Give deployment group name
    
-Select service role for CodeDeploy-Demo(for S3 access)
-There is a need for a Launch Configuration and Auto scaling group for this deployment so creating the same.
+- Select service role for CodeDeploy-Demo(for S3 access)
+- There is a need for a Launch Configuration and Auto scaling group for this deployment so creating the same.
 
-3.4 
-Deployment type-In-place
-Environment configuration-Select Amazon EC2 Auto Scaling groups
-
-
-3.5  Deployment settings-CodeDeployAllAtOnce
-Do nothing in Load Balancer
-
-3.6 Deployment group created
- Click Create Deployment
-
-3.7 Give revision location(Copy it from S3 Artifacts location )
-Revision file type-Zip
-
-3.8 Click on Create Deployment
-
-3.9 Deployment Needs Instances for deployment
- Goto  AWS>Services>EC2>AutoScaling groups>select group and edit
-Editing Auto Scaling group Policy to Desired-2,Min-2,Max-2
-
-3.10 Goto EC2 Dashboard and see that 2 new instances are launching-
-3.11 Goto Step 3.8 and click on create deployment
-       Deployment started on Just launched instances.
-3.12 Monitor the deployment by Clicking on Events-View events
-3.13 Copy the IPaddress of both the instances and paste it in the browser one by one
-3.14 Application is running for both the instances.
-
-Step4- DynamoDB-Postman
- 4.1- Open the Postman tool
-4.2 GUI of Postman tool
-4.3- 
-             Click  on New Collection
-              Name-Ec2
-              Click on Create and create requests for-Create Table,Insert Data,read        Data,update Data,Delete Item,Delete table
-
-4.4- Click on three dots  … >Add request
-4.5 
-Name- Create Table 
-Save to Ec2
-
-Click on request created Create Table
-               Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/createTable
-                Select Body>raw>json>paste the following data.
-                
-          
+**3.4**
+- Deployment type-In-place
+- Environment configuration-Select Amazon EC2 Auto Scaling groups
 
 
+**3.5  Deployment settings-CodeDeployAllAtOnce**
+- Do nothing in Load Balancer
+
+**3.6 Deployment group created**
+ - Click Create Deployment
+
+**3.7 Give revision location(Copy it from S3 Artifacts location )**
+- Revision file type-Zip
+
+**3.8 Click on Create Deployment**
+
+**3.9 Deployment Needs Instances for deployment**
+ - Goto  AWS>Services>EC2>AutoScaling groups>select group and edit
+- Editing Auto Scaling group Policy to Desired-2,Min-2,Max-2
+
+**3.10 Goto EC2 Dashboard and see that 2 new instances are launching-**
+
+**3.11 Goto Step 3.8 and click on create deployment**
+       - Deployment started on Just launched instances.
+**3.12 Monitor the deployment by Clicking on Events-View events**
+
+**3.13 Copy the IPaddress of both the instances and paste it in the browser one by one**
+
+**3.14 Application is running for both the instances.**
+**Step 4- Open the Postman tool**
+
+**Step 4.1-**
+             -  Click  on New Collection
+             -  Name-Ec2
+             -  Click on Create and create requests for-Create Table,Insert Data,read Data,update Data,Delete Item,Delete table
+
+**Step 4.2- Click on three dots  … >Add request**
+
+**Step 4.3** - Name- Create Table 
+         - Save to Ec2
+
+- Click on request created Create Table
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/CreateTable
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName" : "Movies",
     "KeySchema": [       
@@ -3484,18 +3503,18 @@ Click on request created Create Table
         "WriteCapacityUnits": 1
     }
 }
-
+```
   
-4.6 Click on SEND
-4.7
-Check the Table created in DynamoDB. 
-Goto -AWS Console>DynamoDB>Tables>Movies(just created)
-4.8- new request for Insert Data
-Click on request created Insert data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/insertData
-                Select Body>raw>json>paste the following data.
+**4.4 Click on SEND**
+**4.5 Check the Table created in DynamoDB.** 
+- Goto -AWS Console>DynamoDB>Tables>Movies(just created)
 
+**Step 4.6 - new request for Insert Data** 
+- Click on request created Insert data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/insertData
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName":"Movies",
     "Item":{
@@ -3507,43 +3526,47 @@ Click on request created Insert data
         }
     }
 }
-"New item added successfully"
-Check for added item in DynamoDB
-AWS Console>All services>DynamoDB>Tables>Items
-“Kgf Chapter 2” is added
-4.9- new request for ReadData
-Click on request created Read data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/readData
-                Select Body>raw>json>paste the following data.
-4.10
-Check in DynamoDB also
-4.11 
-New request for UpdateData
-Click on request created Update data
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/updateData
-                Select Body>raw>json>paste the following data.
- AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
-4.12
+```
+- "New item added successfully"
+- Check for added item in DynamoDB
+- AWS Console>All services>DynamoDB>Tables>Items
+- “Kgf Chapter 2” is added
 
-New request for deleteItem
-Click on request created deleteItem
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/deleteItem
-                Select Body>raw>json>paste the following data.
-4.13 Check in DynamoDB
-4.14
+**Step 4.7- new request for ReadData** 
+- Click on request created Read data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/ReadData
+- Select Body>raw>json>paste the following data.
 
-New request for Delete Table
-Click on request created Delete Table
-                Select Post in drop-down menu
-                Give URl---http://52.66.211.218:3000/deleteTable
-                Select Body>raw>json>paste the following data.
-Table is Deleted.
+**Step 4.8 Check in DynamoDB also**
+
+
+**Step 4.9- New request for UpdateData**
+- Click on request created Update data
+- Select Post in drop-down menu
+- Give URl---http://52.66.211.218:3000/updateData
+- Select Body>raw>json>paste the following data.
+ - AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
+
+**Step 4.10- New request for deleteItem**
+                - Click on request created deleteItem
+                - Select Post in drop-down menu
+                - Give URl---http://52.66.211.218:3000/deleteItem
+                - Select Body>raw>json>paste the following data.
+
+
+**Step4.11 Check in DynamoDB**
+
+**Step4.12-New request for Delete Table**
+                - Click on request created Delete Table
+                - Select Post in drop-down menu
+                - Give URl---http://52.66.211.218:3000/deleteTable
+                - Select Body>raw>json>paste the following data.
+- Table is Deleted.
 
 
 11.11 Implementing Deployment Configuration
+-----
 (Deployment override-Codedeploy:OneAtaTime)
 Step1- Goto Previously created CodeDeployment group and Click on Create Deployment.
 
