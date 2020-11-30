@@ -1135,28 +1135,24 @@ Dynamo DB
 16.Elastic Beanstalk Hands On
 ---
 
-Step1- Create an application and an environment
-Goto-
-https://console.aws.amazon.com/elasticbeanstalk/home#/gettingStarted?applicationName=getting-started-app
+**Step1- Create an application and an environment**
+- Goto-https://console.aws.amazon.com/elasticbeanstalk/home#/gettingStarted?applicationName=getting-started-app
 
-Name-getting-started-app
+- Name-getting-started-app
 
-Step2- Platform-Node.js
+**Step2- Platform-Node.js**
 
-Step3- Platform version--recommended
-           In Application code-select Sample Application
-          Click on Create Application
+**Step3- Platform version--recommended**
+           - In Application code-select Sample Application
+           - Click on Create Application
 
 
-Step4- Creating environment started-
+**Step4- Creating environment started-**
 Elastic BeanStalk launches an environment named GettingStartedApp-env with these AWS resources:
-
+```
 1.S3 Bucket
-
 2.Target Group
-
 3.Security Group for ec2 instance
-
 4.Security Group for ALB
 5.Auto Scaling launch configuration
 6.Auto Scaling Group
@@ -1164,63 +1160,66 @@ Elastic BeanStalk launches an environment named GettingStartedApp-env with these
 8.CloudWatch Alarms
 9.Load Balancer
 10.Load balancer listener
-
 11.EC2 instance
- Step5 -Check the environment.
+``` 
+ 
+ **Step5 -Check the environment.**
 
-The environment overview pane shows  its name, its URL, its current health status, the name of the currently deployed application version, and the platform version that the application is running on. 
+**The environment overview pane shows  its name, its URL, its current health status, the name of the currently deployed application version, and the platform version that the application is running on.** 
 Below the overview pane you can see the five most recent environment events.
 
-Click on Go to environment
+ - Click on Go to environment
 
-Step6- Goto each component and verify the resources created by Elastic BeanStalk--
+**Step6- Goto each component and verify the resources created by Elastic BeanStalk--**
 
-6.1 S3 Bucket
-  Goto AWS Console>All Services>S3>Buckets 
+**6.1 S3 Bucket**
+  - Goto AWS Console>All Services>S3>Buckets
 
-6.2  Target Group
-Goto AWS Console>All Services>EC2>Load Balancer>Target Group
+**6.2  Target Group**
+ - Goto AWS Console>All Services>EC2>Load Balancer>Target Group**
 
-6.3-Security Groups
-Goto AWS Console>All Services>EC2>Security Groups
+**6.3-Security Groups**
+- Goto AWS Console>All Services>EC2>Security Groups**
 
-6.4  Auto Scaling launch configuration-  
-AWS Console>Services>Ec2>Auto Scaling>launch configuration
-
-
-
-6.5  Auto Scaling Group
-AWS Console>Services>Ec2>Auto Scaling>Auto Scaling Groups
-
-6.6   Auto Scaling Policies-Scale Down,Scale Up
-AWS Console>Services>Ec2>Auto Scaling>Auto Scaling Groups>Click on AS group Created>Automatic Scaling
-
-6.7  CloudWatch Alarms-
-AWS Console>Services>CloudWatch>Alarms>Alarm
-
-6.8  Load Balancer
-AWS Console>Services>EC2>Load Balancing>Load balancers
-
-6.9   Load balancer listener
-AWS Console>Services>EC2>Load Balancing>Load balancers>select load balancer>listeners
-
-6.10  EC2 instance
-AWS Console>All services>EC2 >Instances>      See the instance.
-All Checks has been completed.
-Check Elastic BeanStalk AWS resources List.
+**6.4  Auto Scaling launch configuration-**  
+- AWS Console>Services>Ec2>Auto Scaling>launch configuration**
 
 
-Step7- Terminate the environment.
-AWS Console>All Services>Elastic BeanStalk>Getting-started-env>Actions>terminate environment
+
+**6.5  Auto Scaling Group**
+- AWS Console>Services>Ec2>Auto Scaling>Auto Scaling Groups
+
+**6.6   Auto Scaling Policies-Scale Down,Scale Up**
+- AWS Console>Services>Ec2>Auto Scaling>Auto Scaling Groups>Click on AS group Created>Automatic Scaling
+
+**6.7  CloudWatch Alarms-**
+- AWS Console>Services>CloudWatch>Alarms>Alarm
+
+**6.8  Load Balancer**
+- AWS Console>Services>EC2>Load Balancing>Load balancers
+
+**6.9   Load balancer listener**
+- AWS Console>Services>EC2>Load Balancing>Load balancers>select load balancer>listeners
+
+**6.10  EC2 instance**
+- AWS Console>All services>EC2 >Instances>      
+- See the instance.All Checks has been completed.
+- Check Elastic BeanStalk AWS resources List.
+
+
+**Step7- Terminate the environment.**
+- AWS Console>All Services>Elastic BeanStalk>Getting-started-env>Actions>terminate environment
 
 
 
 Section 5 : Git, Github, and CodeCommit
+---
 
-2. Installing Git & Creating a local git repository
+**2. Installing Git & Creating a local git repository**
 
-Installing Git
-Step1- Open internet Browser and Search for Download git for windows. 
+### Installing Git
+
+**Step1- Open internet Browser and Search for Download git for windows.** 
 Click on Downloads git link
 
 Step2- Click on Download 2.28.0 for windows
