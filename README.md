@@ -3056,63 +3056,65 @@ Step11 -Run #npm install
 
 10.9 Deploying Sample App on Elastic Beanstalk
 -------
-Step1- Goto AWS Console>All Services>Elastic Beanstalk>Create Application
-Click on Create Application
-Application name-NewApp
+**Step1- Goto AWS Console>All Services>Elastic Beanstalk>Create Application**
+- Click on Create Application
+- Application name-NewApp
 
-Step2 -Click on Create
+**Step2 -Click on Create**
 
-Step3 -Click on Create a New Environment
-Step4 -Choose Web server Environment
-          Click on Select
+**Step3 -Click on Create a New Environment**
 
-Step5 -See Environment Information
-Environment name- Newapp-env(Auto-fill)
-Step6 -Platform
-           Platform-Node.js
-          Platform branch-Nodejs t2 running on 64bit Amazon Linux 2
-        Platform version-5.2.2(Recommended)
+**Step4 -Choose Web server Environment**
+          - Click on Select
 
-Step7-
-7.1 Remember the following changes that were not earlier in Zip Folder env.prod file.
-#No hidden files should present in that folder
-##Env prod Port-8080
-###Proc file-web: npm start
+**Step5 -See Environment Information**
+- Environment name- Newapp-env(Auto-fill)
 
-7.2 Application Code
-Select Upload your code>Local file>Choose File>dir.zip
-Click on Create environment
+**Step6 -Platform**
+           - Platform-Node.js
+           -  Platform branch-Nodejs t2 running on 64bit Amazon Linux 2
+           - Platform version-5.2.2(Recommended)
 
-Step8 -Environment Creation started.
-8.1 Creating Newapp-env
-8.2 Deployment completed successfully.
-Step9 -Click on Environments and Click on Newapp.env
-Step10 -Health is OK means Application is working fine.
-        Click on Go to Environment
-Step11 -After clicking on Goto environment it will open in Browser.
-     See your Application is Live!!!
+**Step7-
+7.1 Remember the following changes that were not earlier in Zip Folder env.prod file.**
+- #No hidden files should present in that folder
+- ##Env prod Port-8080
+- ###Proc file-web: npm start
 
-DynamoDB-CRUD operations-
- 1.- Open the Postman tool
-2. GUI of Postman tool
-3.
-             Click  on New Collection
-              Name-Ec2
-              Click on Create and create requests for-Create Table,Insert Data,read        Data,update Data,Delete Item,Delete table
+**7.2 Application Code**
+- Select Upload your code>Local file>Choose File>dir.zip
+- Click on Create environment
 
-4.- Click on three dots  … >Add request
-5. 
-Name- Create Table 
-Save to Ec2
+**Step8 -Environment Creation started.**
+- 8.1 Creating Newapp-env
+- 8.2 Deployment completed successfully.
 
-Click on request created Create Table
-               Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/createTable
-                Select Body>raw>json>paste the following data.
-                
-          
+**Step9 -Click on Environments and Click on Newapp.env**
 
+**Step10 -Health is OK means Application is working fine.**
+        - Click on Go to Environment
 
+**Step11 -After clicking on Goto environment it will open in Browser.**
+     - See your Application is Live!!!
+     
+     
+ **Open the Postman tool**
+
+**Step 1-**
+             -  Click  on New Collection
+             -  Name-Ec2
+             -  Click on Create and create requests for-Create Table,Insert Data,read Data,update Data,Delete Item,Delete table
+
+**Step 2- Click on three dots  … >Add request**
+
+**Step 3** - Name- Create Table 
+         - Save to Ec2
+
+- Click on request created Create Table
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/CreateTable
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName" : "Movies",
     "KeySchema": [       
@@ -3128,18 +3130,18 @@ Click on request created Create Table
         "WriteCapacityUnits": 1
     }
 }
-
+```
   
-6. Click on SEND
-7.
-Check the Table created in DynamoDB. 
-Goto -AWS Console>DynamoDB>Tables>Movies(just created)
-8.- new request for Insert Data
-Click on request created Insert data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/insertData
-                Select Body>raw>json>paste the following data.
+**Step 4- Click on SEND**
+**Step 5- Check the Table created in DynamoDB.** 
+- Goto -AWS Console>DynamoDB>Tables>Movies(just created)
 
+**Step 6 - new request for Insert Data** 
+- Click on request created Insert data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/insertData
+- Select Body>raw>json>paste the following data.
+```sh
 {
     "TableName":"Movies",
     "Item":{
@@ -3151,42 +3153,51 @@ Click on request created Insert data
         }
     }
 }
-"New item added successfully"
-Check for added item in DynamoDB
-AWS Console>All services>DynamoDB>Tables>Items
-“Kgf Chapter 2” is added
-9.- new request for ReadData
-Click on request created Read data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/readData
-                Select Body>raw>json>paste the following data.
-10.
-Check in DynamoDB also
-11. 
-New request for UpdateData
-Click on request created Update data
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/updateData
-                Select Body>raw>json>paste the following data.
- AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
-12.
+```
+- "New item added successfully"
+- Check for added item in DynamoDB
+- AWS Console>All services>DynamoDB>Tables>Items
+- “Kgf Chapter 2” is added
 
-New request for deleteItem
-Click on request created deleteItem
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteItem
-                Select Body>raw>json>paste the following data.
-13. Check in DynamoDB
-14.
+**Step 7- new request for ReadData** 
+- Click on request created Read data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/ReadData
+- Select Body>raw>json>paste the following data.
 
-New request for Delete Table
-Click on request created Delete Table
-                Select Post in drop-down menu
-                URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteTable
-                Select Body>raw>json>paste the following data.
-Table is Deleted.
+**Step 8 Check in DynamoDB also**
 
+
+**Step 9- New request for UpdateData**
+- Click on request created Update data
+- Select Post in drop-down menu
+- Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/updateData
+- Select Body>raw>json>paste the following data.
+ - AWS Console>DynamoDB>Tables>Movies>KGF Chapter2
+
+**Step 10- New request for deleteItem**
+                - Click on request created deleteItem
+                - Select Post in drop-down menu
+                - Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteItem
+                - Select Body>raw>json>paste the following data.
+
+
+**Step 11- Check in DynamoDB**
+
+**Step 12-New request for Delete Table**
+                - Click on request created Delete Table
+                - Select Post in drop-down menu
+                - Give URl---http://alb-583710237.us-west-1.elb.amazonaws.com:3000/deleteTable
+                - Select Body>raw>json>paste the following data.
+- Table is Deleted.
+
+
+
+
+
+      
 Section 11 : Deploying Sample App With CRUD Functionality on AWS ( With CI/CD)
+-----
 
 11.2 Setting up ec2 Instance 
 Step1 -AWS Console>All Services>EC2 Dashboard>Launch Instance
