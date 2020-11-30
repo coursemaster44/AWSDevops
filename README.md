@@ -485,7 +485,7 @@ All traffic is allowed out of this NACL.
        IPv4 CIDR block as “10.0.2.0/24”
        Click on Create.
 
-**Step4-Create Internet Gateway
+**Step4-Create Internet Gateway**
 - 4.1  Goto AWS Console>All Services>VPC>Internet Gateways-
        Click on “Create Internet gateway”
 - 4.2 Type  name as “Custom-IG”
@@ -601,14 +601,19 @@ Value-Custom-ec2-private
 
 
 
-9. ELB Hands On
+### 9. ELB Hands On
 
 Elastic Load Balancing
-Step1- Go to AWS Console>All Services>EC2>Load Balancing>Load Balancers>Create load balancer
-Step2- Select load balancer type from three given load balancers.Note We need Ec2 instances to serve the traffic.After Creating Ec2 instances in next step we will come back to this step.
-Step3- Launch two EC2-instances for serving the Traffic of Load Balancer.
+--- 
+**Step1- Go to AWS Console>All Services>EC2>Load Balancing>Load Balancers>Create load balancer**
+
+**Step2- Select load balancer type from three given load balancers.Note We need Ec2 instances to serve the traffic.After Creating Ec2 instances in next step we will come back to this step.**
+
+**Step3- Launch two EC2-instances for serving the Traffic of Load Balancer.**
 See-Step7-Launch EC2 with Public IP
-3.1 AWS Console>All Services>EC2>Launch Instance
+
+**3.1 AWS Console>All Services>EC2>Launch Instance**
+```
 3.2 Select AMI
 3.3 Choose-Instance Type as General purpose t2.micro
 3.4 Keep the things default,select the Subnet in us-east-2a AZ.
@@ -623,37 +628,49 @@ Provide following User Data and And Click on Next:Add Storage
       Click on Launch Instances.
 3.11 Click on View Instances.
 3.12 Copy the IP of Instances and check in browser that they are serving the traffic -
+```
+**Step4- Click on Create in Application Load balancer.**
 
-Step4- Click on Create in Application Load balancer.
-Step5- In Basic Configuration
-Give name-     ”course-master-elb”
-In Scheme- internet-facing
-Listeners- HTTP protocol and port-80
-Step6- Select the Availability Zones and Click on Next:configure security settings.
-Step7- Create a security group with the name”elb-sg-group”  with port 80 open to the world for accessing from the internet.
-And click on Configure Routing
-Step8- In Target Group 
-           Select -New target group
-            Name-”ELB-TG”
-           Target type- Instance
-Click on Next:Register Targets
+**Step5- In Basic Configuration**
 
-Step9-  Select the instances to add them in Registered targets  
-             Click on Next:Review.
-Step10- Check all the settings before continuing and Click on Create.
-Step11- Successfully created load balancer now Click on Close
-Step12-Click on the load balancers> click on “course-master-elb” load balancer.
-See that it is in a provisioning state.
+- Give name-     ”course-master-elb”
+- In Scheme- internet-facing
+- Listeners- HTTP protocol and port-80
+
+**Step6- Select the Availability Zones and Click on Next:configure security settings.**
+
+**Step7- Create a security group with the name”elb-sg-group”  with port 80 open to the world for accessing from the internet.
+And click on Configure Routing**
+
+**Step8- In Target Group**
+           - Select -New target group
+           - Name-”ELB-TG”
+           - Target type- Instance
+           - Click on Next:Register Targets
+
+**Step9-  Select the instances to add them in Registered targets**  
+             - Click on Next:Review.
+
+**Step10- Check all the settings before continuing and Click on Create.**
+
+**Step11- Successfully created load balancer now Click on Close**
+
+**Step12-Click on the load balancers> click on “course-master-elb” load balancer.**
+- See that it is in a provisioning state.
 Wait for some time.
-Step13- See now it is in active state
-Step14-Copy the URL(DNS name) of load balancer
-Step15- This is the URL for Application Load Balancer and Traffic is served by two EC2 behind ALB.
-Course-master-elb-218574868.us-west-2.elb.amazonaws.com
-Copy this URL and paste it in Browser.
-This is the first EC2 instance with IP-172.31.22.19
-Step16-Refresh the Browser and see that IP has changed to IP-172.31.56.72 as traffic is served by another ec2 instance now.
+
+**Step13- See now it is in active state**
+
+**Step14-Copy the URL(DNS name) of load balancer**
+
+**Step15- This is the URL for Application Load Balancer and Traffic is served by two EC2 behind ALB.**
+- Course-master-elb-218574868.us-west-2.elb.amazonaws.com
+- Copy this URL and paste it in Browser.
+- This is the first EC2 instance with IP-172.31.22.19
+
+**Step16-Refresh the Browser and see that IP has changed to IP-172.31.56.72 as traffic is served by another ec2 instance now.**
 Practical has been completed now Terminate your ec2 instances and load balancer for avoiding any kind of charges by AWS.
-Select your load balancer >Actions>delete.
+- Select your load balancer >Actions>delete.
 
 
 
@@ -668,10 +685,12 @@ Select your load balancer >Actions>delete.
 
 
 10.Autoscaling Introduction & Hands On
+----
 
 Auto Scaling
+---
 
-Step1-AWS Console>All Services>EC2>Auto Scaling>Launch Configuration.
+**Step1-AWS Console>All Services>EC2>Auto Scaling>Launch Configuration.**
 
 Step2- Give name as “Demo-lc” and select AMI(Copy it from Ec2 Launch Instance)
 
