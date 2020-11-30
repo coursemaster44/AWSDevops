@@ -1977,23 +1977,26 @@ VALIDATE SERVICE
 7.11 Deploying Sample App on ec2 Fleet -1
 -----
 
-Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.
-Step2-Create Application
-AWS Console>All services>CodeDeploy>Applications
-Fill application name as node-sample-ap-deploy and select compute platform as EC2-On premises.
+**Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.**
+
+**Step2-Create Application**
+- AWS Console>All services>CodeDeploy>Applications
+- Fill application name as node-sample-ap-deploy and select compute platform as EC2-On premises.
 
 Application created.
 
 
-Step3-Create Launch Configuration
-Goto AWS Console>EC2>Launch Configuration
-Copy AMI name value from Launch instance section of EC2.
-Step4- Give Name,AMI,Instance type
-Enter  IAM Instance profile which was created in the first step.
+**Step3-Create Launch Configuration**
+- Goto AWS Console>EC2>Launch Configuration
+- Copy AMI name value from Launch instance section of EC2.
 
-Provide user data in Additional Configuration section
-Application User data
+**Step4- Give Name,AMI,Instance type**
+- Enter  IAM Instance profile which was created in the first step.
 
+**Provide user data in Additional Configuration section**
+
+- Application User data
+```
 #!/bin/bash
 yum update -y
 yum install ruby -y
@@ -2012,41 +2015,45 @@ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/instal
 chmod +x ./install
 ./install auto
 service codedeploy-agent status
+```
 
+**Step5-Security Groups section:Create security group with name AutoScaling-security-group-elb and give All Traffic in Rule type source anywhere (only as of now not recommended for production)**
 
-Step5-Security Groups section:Create security group with name AutoScaling-security-group-elb and give All Traffic in Rule type source anywhere (only as of now not recommended for production)
+- Choose key pair and click on create launch configuration
+- Launch configuration created.
 
-Choose key pair and click on create launch configuration
+**Step6- Select launch configuration and click the actions tab and click on create auto scaling group.**
 
-Launch configuration created.
+**Step7 -Select VPC and subnets**
 
-Step6- Select launch configuration and click the actions tab and click on create auto scaling group.
-Step7 -Select VPC and subnets
-Step8- Configure advanced options-keep things default 
-Step9 -Configure Group size and scaling Policies.
-Desired-1,Min-1,Max-1
-Scaling Policies-None
-Step10 -Add notification-No change required
-Click next 
-Add tags Click next
-Click Review and ASG will be created.
+**Step8- Configure advanced options-keep things default** 
 
-Step11- Goto DeveloperTools>CodeDeploy>Applications>Dynamo-db>Create deployGp
+**Step9 -Configure Group size and scaling Policies.**
+- Desired-1,Min-1,Max-1
+- Scaling Policies-None
 
-Step12- Deployment type-In-place
-ENV config>amazon EC2 Auto scaling groups>SingleEc2ASG
-Matching Instances-1
-Deployment settings-CodeDeployDefault:AllatOnce
-Deselect load balancer
-Click on Create deployment group.
+**Step10 -Add notification-No change required
+- Click next 
+- Add tags Click next
+- Click Review and ASG will be created.
 
-Step13- Deployment group created successfully.click on Create deployment.
+**Step11- Goto DeveloperTools>CodeDeploy>Applications>Dynamo-db>Create deployGp**
 
-Step14- select revision location and revision type as zip
-Click on create deployment.
-Step15- Deployment Created.
+**Step12- Deployment type-In-place**
+- ENV config>amazon EC2 Auto scaling groups>SingleEc2ASG
+- Matching Instances-1
+- Deployment settings-CodeDeployDefault:AllatOnce
+- Deselect load balancer
+- Click on Create deployment group.
 
-Step16 -Copy the Ip of Ec2 instances SeeApplication is live
+**Step13- Deployment group created successfully.click on Create deployment.**
+
+**Step14- select revision location and revision type as zip**
+- Click on create deployment.
+
+**Step15- Deployment Created.**
+
+**Step16 -Copy the Ip of Ec2 instances SeeApplication is live**
 
 
 
@@ -2055,6 +2062,8 @@ Step16 -Copy the Ip of Ec2 instances SeeApplication is live
 
 
 7.12 Deploying Sample App on ec2 Fleet -2
+----
+
 
 Step1- Creating IAM “CodeDeployDemo-EC2-Instance-Profile” Instance profile with S3 access.
 Step2-Create Application
