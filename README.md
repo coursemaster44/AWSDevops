@@ -1222,88 +1222,119 @@ Section 5 : Git, Github, and CodeCommit
 **Step1- Open internet Browser and Search for Download git for windows.** 
 Click on Downloads git link
 
-Step2- Click on Download 2.28.0 for windows
+**Step2- Click on Download 2.28.0 for windows**
 
-Step3-  Click on the downloaded file GIT-2.28.0-64-bit.exe
+**Step3-  Click on the downloaded file GIT-2.28.0-64-bit.exe**
 
-Step4-- Click on Run
+**Step4-- Click on Run**
 
-Step5--Click Next
+**Step5--Click Next**
 
-Step6- Select Destination Location and Click on Next
+**Step6- Select Destination Location and Click on Next**
 
-Step7- Select Components and  Click on Next
+**Step7- Select Components and  Click on Next**
 
-Step8-  To continue,click Next.If you would like to select a different folder,click Browse.
+**Step8-  To continue,click Next.If you would like to select a different folder,click Browse.**
 
-Step9- Select Use Git from the Windows Command Prompt
-Click on Next
+**Step9- Select Use Git from the Windows Command Prompt**
+- Click on Next
 
-Step10-Select Use the OpenSSL library and Click on Next
+**Step10-Select Use the OpenSSL library and Click on Next**
 
-Step11-- Select Checkout Windows-style,commit unix style and Click on Next
+**Step11-- Select Checkout Windows-style,commit unix style and Click on Next**
 
-Step12- Select Use MinTTY and Click Next
+**Step12- Select Use MinTTY and Click Next**
 
-Step13- Select Enable file system caching and Enable Git credentials Manager and Click Next
+**Step13- Select Enable file system caching and Enable Git credentials Manager and Click Next**
 
-Step14-- Click Install
+**Step14-- Click Install**
 
-Step15--- Installation has been started
+**Step15--- Installation has been started**
 
-Step16- Select Launch Git bash
-Click on Finish
+**Step16- Select Launch Git bash**
+- Click on Finish
 
-Git Has been installed.
+**Git Has been installed.**
 
 Create a Local Git Repository
+---
 
-1.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
-2.	Create a directory “git-demo” : mkdir git-demo
-3.	Move into this directory : cd git-demo
-4.	Initialize git in this directory : git init
-5.	Signup + Login/Login into github
-6.	Create a repository called “git-demo” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Don’t click/select anything else. Click on “Create repository”.
-7.	Connect “git-demo” local repository/directory with “git-demo” remote repository on github : git remote add origin https://github.com/singhamit9/git-demo.git
-8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
+- 1.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
+
+- 2.	Create a directory “git-demo” : mkdir git-demo
+
+- 3.	Move into this directory : cd git-demo
+
+- 4.	Initialize git in this directory : git init
+
+- 5.	Signup + Login/Login into github
+
+- 6.	Create a repository called “git-demo” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Don’t    click/select anything else. Click on “Create repository”.
+
+- 7.	Connect “git-demo” local repository/directory with “git-demo” remote repository on github : git remote add origin https://github.com/singhamit9/git-demo.git
+
+- 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
 [remote "origin"]
 url = https://github.com/singhamit9/git-demo.git
+
 9.	Create .gitignore file : touch .gitignore
+
 10.	Open .gitignore and add these two entries:
 node_modules/
 .DS_Store . Save the file.
+
 11.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
+
 12.	Commit .gitignore to local repository : git commit -am “First commit”.
+
 13.	Push first commit to remote github repository : git push -u origin master
+
 14.	Copy the following files and folders from node-project directory : package.json, public, src, templates, deploy_scripts, appspec.yml, buildspec.yml to git-demo directory.
+
 15.	Check status of file tracking by git and add newly added/modified files & folders to git tracking : git status -> git add .
+
 16.	Commit these files & folders to remote github repository : git push -u origin master
+
 17.	Refresh the github page with repository git-demo. You will see all your latest commits (changes) here.
 
 
 
 
 3.Create a remote Git repository & connect with local git repository
+----
 
 
-1.	Signup + Login/Login into github
-2.	Create a repository called “git-demo-1” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Check the checkbox “Add a README file”. Click on “Create repository”.
-3.	Click on dropdown menu “Code” -> Ensure HTTPS tab is selected  -> Copy the HTTPS URL underneath.
-4.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
-5.	Ensure you are in the directory where you want to clone this remote repository. For me, it is ~/Documents/CICD : cd ~/Documents/CICD .
-6.	Clone the remote Github directory : git clone https://github.com/singhamit9/git-demo-1.git (this is the url you copied from github in step 3)
-7.	Move into the newly created directory/local git repository : cd git-demo-1
-8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
+- 1.	Signup + Login/Login into github
+
+- 2.	Create a repository called “git-demo-1” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Check the  checkbox “Add a README file”. Click on “Create repository”.
+
+- 3.	Click on dropdown menu “Code” -> Ensure HTTPS tab is selected  -> Copy the HTTPS URL underneath.
+
+- 4.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
+
+- 5.	Ensure you are in the directory where you want to clone this remote repository. For me, it is ~/Documents/CICD : cd ~/Documents/CICD .
+
+- 6.	Clone the remote Github directory : git clone https://github.com/singhamit9/git-demo-1.git (this is the url you copied from github in step 3)
+
+- 7.	Move into the newly created directory/local git repository : cd git-demo-1
+
+- 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
 [remote "origin"]
 url = https://github.com/singhamit9/git-demo1.git
-9.	Create .gitignore file : touch .gitignore
-10.	Open .gitignore and add these two entries:
+
+- 9.	Create .gitignore file : touch .gitignore
+
+- 10.	Open .gitignore and add these two entries:
 node_modules/
 .DS_Store . Save the file.
-11.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
-12.	Commit .gitignore to local repository : git commit -am “First commit”.
-13.	Push first commit to remote github repository : git push -u origin master .
-14.	Refresh the github page with repository git-demo-1. You will see all your latest commits (changes) here.
+
+- 11.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
+
+- 12.	Commit .gitignore to local repository : git commit -am “First commit”.
+
+- 13.	Push first commit to remote github repository : git push -u origin master .
+
+- 14.	Refresh the github page with repository git-demo-1. You will see all your latest commits (changes) here.
 
 
 
@@ -1313,133 +1344,112 @@ node_modules/
 
 
 Introduction To AWS CodeCommit
+----
 
-1.	Sign in into your AWS account with the root user.
+- 1.	Sign in into your AWS account with the root user.
 
+- 2.	In the “Find Services” textbox, type “IAM” and click on IAM.
 
+- 3.	Under “Access Management”, click on “Users”-> click on “Add User”
 
-2.	In the “Find Services” textbox, type “IAM” and click on IAM.
-3.	Under “Access Management”, click on “Users”-> click on “Add User”
-
-
-4.	In the “User-name” text box, type the name of the user you want to create (in this case : “course-master”). Check “Programmatic Access”, and “AWS Management Console access” checkboxes. Click on the “Custom Password” radio box and type the password you want. Uncheck, “Require password reset” and click on “Next: Permissions” button.
-
+- 4.	In the “User-name” text box, type the name of the user you want to create (in this case : “course-master”). Check “Programmatic Access”, and “AWS  Management Console access” checkboxes. Click on the “Custom Password” radio box and type the password you want. Uncheck, “Require password reset” and click on “Next: Permissions” button.
 
 
-5.	Click on “Attach existing policies directly”-> check the checkbox for “Administratoraccess”-> click on “Next: tags” button.
+- 5.         Click on “Attach existing policies directly”-> check the checkbox for “Administratoraccess”-> click on “Next: tags” button.
 
+- 6.	Click on “Next: Review”.
 
-6.	Click on “Next: Review”.
+- 7.	Click on “Create User”.
 
-7.	Click on “Create User”.
+- 8.	Click on “Download .csv” -> click on close
 
+- 9.	Click on “Dashboard” -> click on “Customize” next to sign-in link.
 
+- 10.	Type Account Alias and click on “Yes, Create”.
 
-8.	Click on “Download .csv” -> click on close
-9.	Click on “Dashboard” -> click on “Customize” next to sign-in link.
+- 11.	 Note the modified “IAM User sign-in link”: https://course-master.signin.aws.amazon.com/console
 
+- 12.	Sign out of AWS console.
 
+- 13.	Sign in using this URL : https://course-master.signin.aws.amazon.com/console
 
-10.	Type Account Alias and click on “Yes, Create”.
+- 14.	Type User-name in “IAM user name” text box, and password in “Password” text box -> click on “sign-in” button.
 
+- 15.	In the “Find Services” textbox, type “IAM” and click on IAM.
 
+- 16.	Under “Access Management”, click on “Users”-> click on “course-master” username.
 
-11.	 Note the modified “IAM User sign-in link”: https://course-master.signin.aws.amazon.com/console
-12.	Sign out of AWS console.
-13.	Sign in using this URL : https://course-master.signin.aws.amazon.com/console
-14.	Type User-name in “IAM user name” text box, and password in “Password” text box -> click on “sign-in” button.
+- 17.	Click on “Security Credentials” tab
 
+- 18.	Scroll down and click on “Generate credentials” in HTTPS git credentials for AWS Code Commit
 
+- 19.	Click on “Generate credentials” -> Download credentials“Close” button.
 
-15.	In the “Find Services” textbox, type “IAM” and click on IAM.
+-20.	Click on “Services” ->  under “All Services”, type codecommit ->click on CodeCommit
 
+- 21.	On the CodeCommit landing page, click on “Repositories” from left menu panel -> click on “Create repository
 
-16.	Under “Access Management”, click on “Users”-> click on “course-master” username.
-17.	Click on “Security Credentials” tab
+- 22.	 In “Repository settings”, type “Repository name” as “node-sample-ap”-> click on “Create” button.
 
-
-
-18.	Scroll down and click on “Generate credentials” in HTTPS git credentials for AWS Code Commit
-
-
-
-19.	Click on “Generate credentials” -> Download credentials“Close” button.
+- 23.	 Scroll down -> click on “Copy” under “Step 3 : Clone the repository”.
 
 
 
-20.	Click on “Services” ->  under “All Services”, type codecommit ->click on CodeCommit
+- 24.	Open the working directory on your local system on VS Code. In this case, ~/Documents/CICDDemo
 
+- 25.	 Click on “Terminal” menu -> “New Terminal”
 
-21.	On the CodeCommit landing page, click on “Repositories” from left menu panel -> click on “Create repository
+- 26.	Paste the copied URL from step 23 in terminal and hit enter
 
+- 27.	 Type the CodeCommit username you generated in step 19 in the pop up for “Username” -> hit enter
 
+- 28.	 Type CodeCommit password you generated in step 19 in the “Password” pop-up -> hit enter.
 
-22.	 In “Repository settings”, type “Repository name” as “node-sample-ap”-> click on “Create” button.
+- 29.	A local directory/git repository “node-sample-ap” got created under your working directory (here ~/Documents/CICDDemo).
 
+- 30.	Move into the newly created local git repository : cd node-sample-ap
 
-
-23.	 Scroll down -> click on “Copy” under “Step 3 : Clone the repository”.
-
-
-
-24.	Open the working directory on your local system on VS Code. In this case, ~/Documents/CICDDemo
-25.	 Click on “Terminal” menu -> “New Terminal”
-
-
-
-26.	Paste the copied URL from step 23 in terminal and hit enter
-
-
-
-27.	 Type the CodeCommit username you generated in step 19 in the pop up for “Username” -> hit enter
-
-
-
-28.	 Type CodeCommit password you generated in step 19 in the “Password” pop-up -> hit enter.
-
-
-
-29.	A local directory/git repository “node-sample-ap” got created under your working directory (here ~/Documents/CICDDemo).
-30.	Move into the newly created local git repository : cd node-sample-ap
-31.	Create .gitignore file : touch .gitignore
-32.	Open .gitignore and add these two entries:
+```sh
+- 31.	Create .gitignore file : touch .gitignore
+```
+- 32.	Open .gitignore and add these two entries:
 node_modules/
 .DS_Store . Save the file.
-33.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
-34.	First commit# Commit .gitignore to local repository : git commit -am “First commit”.
-35.	First Push#Push first commit to remote github repository : git push -u origin master
 
+```
+- 33.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
+```
+```
+- 34.	First commit# Commit .gitignore to local repository : git commit -am “First commit”.
+```
+```
+- 35.	First Push#Push first commit to remote github repository : git push -u origin master
+```
+```
+- 36.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
+```
+```
+- 37.	 .gitignore file is now present in “node-sample-ap” repository.
+```
+```sh
+- 38.	Copy all the contents of ~/Documents/CICD/nodejs-web-app-with-ejs/ to present working directory (~/Documents/CICDDemo) : cp -R ../../CICD/nodejs-web-app-with-ejs/ .
+```
 
+```
+- 39.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .
+```
 
+```
+- 40.	Commit newly tracked files to local repository : git commit -am “Second commit”.
+```
 
-36.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
+```
+- 41.	Push second commit to remote github repository : git push -u origin master
+```
 
+- 42.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
 
-
-37.	 .gitignore file is now present in “node-sample-ap” repository.
-
-
-
-38.	Copy all the contents of ~/Documents/CICD/nodejs-web-app-with-ejs/ to present working directory (~/Documents/CICDDemo) : cp -R ../../CICD/nodejs-web-app-with-ejs/ .
-
-
-
-39.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .
-40.	Commit newly tracked files to local repository : git commit -am “Second commit”.
-41.	
-
-
-
-
-42.	Push second commit to remote github repository : git push -u origin master
-
-
-
-43.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
-
-
-
-44.	Pushed files in step 42 are now present in “node-sample-ap” repository.
+- 43.	Pushed files in step 42 are now present in “node-sample-ap” repository.
 
 
 
@@ -1469,19 +1479,27 @@ node_modules/
 
 
 Section 6 : Deploying Sample App on AWS (Without CI/CD)
-6.3 Setting-up ec2 Instance
-3.1AWS Console>All services>EC2
+---
 
-3.2 Click on Launch Instance :
-3.3 Select AMI Linux2
-3.4 Choose Instance type t2 micro.
-Click Next:Configure Instance
-3.5 Leave everything  default beside IAM Role and User Data Section
-Click Create IAM Role
-AWS Console>IAM>Role>Create Role
+6.3 Setting-up ec2 Instance
+---
+
+- 3.1AWS Console>All services>EC2
+
+- 3.2 Click on Launch Instance :
+
+- 3.3 Select AMI Linux2
+
+- 3.4 Choose Instance type t2 micro and Click Next:Configure Instance
+
+- 3.5 Leave everything  default beside IAM Role and User Data Section and Click Create IAM Role
+- AWS Console>IAM>Role>Create Role
+
 3.6-Now come back to EC2 Instance creation page.
 Select IAM Role as node-sample-ap-ec2-role
+
 3.7 Refer script for user data.
+```sh
 #!/bin/bash
 yum update -y
 yum install ruby -y
@@ -1492,26 +1510,35 @@ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/instal
 chmod +x ./install
 ./install auto
 service codedeploy-agent status
+```
 
-3.8 Click Next:Add Storage---keep Default
-Click Next Tags in Tags give key as name and value as deploy
-3.9 Configure security groups:Give All Traffic access for as of now(not recommended in production)
-3.10 Click on review and Launch
-Create a key pair and download it .
-View Instances
-6.4. Pushing Sample App on CodeCommit
+- 3.8 Click Next:Add Storage---keep Default
+  Click Next Tags in Tags give key as name and value as deploy
+  
+- 3.9 Configure security groups:Give All Traffic access for as of now(not recommended in production)
+
+- 3.10 Click on review and Launch
+  Create a key pair and download it .
+  View Instances
+ 
+- 6.4. Pushing Sample App on CodeCommit
+
+
 Step1- Code Commit-
-1.1 AWS Console>All services>Code Commit>repositories>create repository>Create
+---
+
+- 1.1 AWS Console>All services>Code Commit>repositories>create repository>Create
     Give Name-MYRepo
 
-1.2 Copy URL
-1.3 Goto Local PC and open Git with Application Code location and type #git init
+- 1.2 Copy URL
+
+- 1.3 Goto Local PC and open Git with Application Code location and type #git init
 
 1.4 #git status
 
 1.5 #Git add .
 
-1.6 #Git commit -m “Commit1”
+1.6 # Git commit -m “Commit1”
 
 1.7 # Git clone https://git-codecommit.us-west-1.amazonaws.com/v1/repos/MyRepo 
 Provide User name and password for HTTPS Code Commit.
