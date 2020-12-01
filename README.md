@@ -137,7 +137,7 @@ You will not have access to the secret keys again after this step.**
 
 **Step8 : IAM Dashboard>Users>Demouser**
             - Verify the created Demouser 
-            - Click on Demouser and see the access of the Demouser.**
+            - Click on Demouser and see the access of the Demouser.
 
 **Step-9:Click on Permissions**
 
@@ -158,7 +158,7 @@ Provide your Access key Id and Secret Access key which was downloaded in Step6.*
 
 **Step-2: -Click on 64-bit in the Windows section and download it.**
 
-**Step-3:- Open the downloaded file(AWSCLIV2.msi) >Right click > Install **
+**Step-3:- Open the downloaded file(AWSCLIV2.msi) >Right click > Install**
 
 **Step-4:- Click on Next**
 
@@ -200,7 +200,7 @@ Click on "Downloads git" link**
 
 **Step-4:-- Click on Run**
 
-**Step-5:--Click Next **
+**Step-5:--Click Next**
 
 **Step-6:- Select Destination Location and Click on Next**
 
@@ -254,14 +254,14 @@ Step21-  Type # “git status”
 git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. 
 
 **Step22 -  Create one file manually in test folder and see what happens--
-Now type git status again in git Bash--**
+Now type git status again in git Bash**
 ```
 Step23 -Type # “ git add .”
 ```
 This command adds one or more to the staging area.
 Then type git status to see the status.
 ```
-Step24-  Type #git commit -m”first commit”|
+Step24-  Type #git commit -m”first commit”
 ```
 This command records or snapshots the file permanently in the version history.
 ```
