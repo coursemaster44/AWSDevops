@@ -253,8 +253,8 @@ Step21-  Type # “git status”
 
 git status will return the current working branch. If a file is in the staging area, but not committed, it shows with git status. 
 
-**Step22 -  Create one file manually in test folder and see what happens--
-Now type git status again in git Bash**
+**Step22- Create one file manually in test folder and see what happens.Now type git status again in git Bash**
+
 ```
 Step23 -Type # “ git add .”
 ```
@@ -1082,7 +1082,8 @@ Dynamo DB
  **Step4- Check  that the storage is 0 bytes**
  **Step5- click on items>create item**
  **Step6- click on + button**
- **Step7-  - enter id -101
+ **Step7- Fill Details**
+           - enter id -101
        	 - Name-ram
            - Mobile-0123123123  and click on save.
  
@@ -1258,22 +1259,22 @@ Click on Downloads git link
 
 Create a Local Git Repository
 ---
+```
+ 1.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
 
-- 1.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
+ 2.	Create a directory “git-demo” : mkdir git-demo
 
-- 2.	Create a directory “git-demo” : mkdir git-demo
+ 3.	Move into this directory : cd git-demo
 
-- 3.	Move into this directory : cd git-demo
+ 4.	Initialize git in this directory : git init
 
-- 4.	Initialize git in this directory : git init
+ 5.	Signup + Login/Login into github
 
-- 5.	Signup + Login/Login into github
+ 6.	Create a repository called “git-demo” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Don’t    click/select anything else. Click on “Create repository”.
 
-- 6.	Create a repository called “git-demo” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Don’t    click/select anything else. Click on “Create repository”.
+ 7.	Connect “git-demo” local repository/directory with “git-demo” remote repository on github : git remote add origin https://github.com/singhamit9/git-demo.git
 
-- 7.	Connect “git-demo” local repository/directory with “git-demo” remote repository on github : git remote add origin https://github.com/singhamit9/git-demo.git
-
-- 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
+ 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
 [remote "origin"]
 url = https://github.com/singhamit9/git-demo.git
 
@@ -1296,46 +1297,46 @@ node_modules/
 16.	Commit these files & folders to remote github repository : git push -u origin master
 
 17.	Refresh the github page with repository git-demo. You will see all your latest commits (changes) here.
-
+```
 
 
 
 3.Create a remote Git repository & connect with local git repository
 ----
 
+```
+1.	Signup + Login/Login into github
 
-- 1.	Signup + Login/Login into github
+2.	Create a repository called “git-demo-1” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Check the  checkbox “Add a README file”. Click on “Create repository”.
 
-- 2.	Create a repository called “git-demo-1” : Repositories-> New-> Type “git-demo” in “Repository name” text-box. Check the radio button “Public”. Check the  checkbox “Add a README file”. Click on “Create repository”.
+ 3.	Click on dropdown menu “Code” -> Ensure HTTPS tab is selected  -> Copy the HTTPS URL underneath.
 
-- 3.	Click on dropdown menu “Code” -> Ensure HTTPS tab is selected  -> Copy the HTTPS URL underneath.
+ 4.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
 
-- 4.	In VS Code, Open Terminal : “Terminal” menu-> New Terminal
+ 5.	Ensure you are in the directory where you want to clone this remote repository. For me, it is ~/Documents/CICD : cd ~/Documents/CICD .
 
-- 5.	Ensure you are in the directory where you want to clone this remote repository. For me, it is ~/Documents/CICD : cd ~/Documents/CICD .
+ 6.	Clone the remote Github directory : git clone https://github.com/singhamit9/git-demo-1.git (this is the url you copied from github in step 3)
 
-- 6.	Clone the remote Github directory : git clone https://github.com/singhamit9/git-demo-1.git (this is the url you copied from github in step 3)
+ 7.	Move into the newly created directory/local git repository : cd git-demo-1
 
-- 7.	Move into the newly created directory/local git repository : cd git-demo-1
-
-- 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
+ 8.	Open .git/config file in terminal : cat .git/config . You will find an entry :
 [remote "origin"]
 url = https://github.com/singhamit9/git-demo1.git
 
-- 9.	Create .gitignore file : touch .gitignore
+ 9.	Create .gitignore file : touch .gitignore
 
-- 10.	Open .gitignore and add these two entries:
+ 10.	Open .gitignore and add these two entries:
 node_modules/
 .DS_Store . Save the file.
 
-- 11.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
+ 11.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
 
-- 12.	Commit .gitignore to local repository : git commit -am “First commit”.
+ 12.	Commit .gitignore to local repository : git commit -am “First commit”.
 
-- 13.	Push first commit to remote github repository : git push -u origin master .
+ 13.	Push first commit to remote github repository : git push -u origin master .
 
-- 14.	Refresh the github page with repository git-demo-1. You will see all your latest commits (changes) here.
-
+ 14.	Refresh the github page with repository git-demo-1. You will see all your latest commits (changes) here.
+```
 
 
 
@@ -1478,7 +1479,7 @@ node_modules/
 
 
 
-Section 6 : Deploying Sample App on AWS (Without CImm/CD)
+Section 6 : Deploying Sample App on AWS (Without CI/CD)
 ---
 
 6.3 Setting-up ec2 Instance
