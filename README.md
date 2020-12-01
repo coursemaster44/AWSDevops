@@ -1346,113 +1346,110 @@ node_modules/
 
 Introduction To AWS CodeCommit
 ----
-
-- 1.	Sign in into your AWS account with the root user.
-
-- 2.	In the “Find Services” textbox, type “IAM” and click on IAM.
-
-- 3.	Under “Access Management”, click on “Users”-> click on “Add User”
-
-- 4.	In the “User-name” text box, type the name of the user you want to create (in this case : “course-master”). Check “Programmatic Access”, and “AWS  Management Console access” checkboxes. Click on the “Custom Password” radio box and type the password you want. Uncheck, “Require password reset” and click on “Next: Permissions” button.
-
-
-- 5.         Click on “Attach existing policies directly”-> check the checkbox for “Administratoraccess”-> click on “Next: tags” button.
-
-- 6.	Click on “Next: Review”.
-
-- 7.	Click on “Create User”.
-
-- 8.	Click on “Download .csv” -> click on close
-
-- 9.	Click on “Dashboard” -> click on “Customize” next to sign-in link.
-
-- 10.	Type Account Alias and click on “Yes, Create”.
-
-- 11.	 Note the modified “IAM User sign-in link”: https://course-master.signin.aws.amazon.com/console
-
-- 12.	Sign out of AWS console.
-
-- 13.	Sign in using this URL : https://course-master.signin.aws.amazon.com/console
-
-- 14.	Type User-name in “IAM user name” text box, and password in “Password” text box -> click on “sign-in” button.
-
-- 15.	In the “Find Services” textbox, type “IAM” and click on IAM.
-
-- 16.	Under “Access Management”, click on “Users”-> click on “course-master” username.
-
-- 17.	Click on “Security Credentials” tab
-
-- 18.	Scroll down and click on “Generate credentials” in HTTPS git credentials for AWS Code Commit
-
-- 19.	Click on “Generate credentials” -> Download credentials“Close” button.
-
--20.	Click on “Services” ->  under “All Services”, type codecommit ->click on CodeCommit
-
-- 21.	On the CodeCommit landing page, click on “Repositories” from left menu panel -> click on “Create repository
-
-- 22.	 In “Repository settings”, type “Repository name” as “node-sample-ap”-> click on “Create” button.
-
-- 23.	 Scroll down -> click on “Copy” under “Step 3 : Clone the repository”.
-
-
-
-- 24.	Open the working directory on your local system on VS Code. In this case, ~/Documents/CICDDemo
-
-- 25.	 Click on “Terminal” menu -> “New Terminal”
-
-- 26.	Paste the copied URL from step 23 in terminal and hit enter
-
-- 27.	 Type the CodeCommit username you generated in step 19 in the pop up for “Username” -> hit enter
-
-- 28.	 Type CodeCommit password you generated in step 19 in the “Password” pop-up -> hit enter.
-
-- 29.	A local directory/git repository “node-sample-ap” got created under your working directory (here ~/Documents/CICDDemo).
-
-- 30.	Move into the newly created local git repository : cd node-sample-ap
-
 ```sh
-- 31.	Create .gitignore file : touch .gitignore
-```
-- 32.	Open .gitignore and add these two entries:
+ 1.	Sign in into your AWS account with the root user.
+
+ 2.	In the “Find Services” textbox, type “IAM” and click on IAM.
+
+3.	Under “Access Management”, click on “Users”-> click on “Add User”
+
+4.	In the “User-name” text box, type the name of the user you want to create (in this case : “course-master”). Check “Programmatic Access”, and “AWS  Management Console access” checkboxes. Click on the “Custom Password” radio box and type the password you want. Uncheck, “Require password reset” and click on “Next: Permissions” button.
+
+
+5.         Click on “Attach existing policies directly”-> check the checkbox for “Administratoraccess”-> click on “Next: tags” button.
+
+6.	Click on “Next: Review”.
+
+ 7.	Click on “Create User”.
+
+8.	Click on “Download .csv” -> click on close
+
+9.	Click on “Dashboard” -> click on “Customize” next to sign-in link.
+
+ 10.	Type Account Alias and click on “Yes, Create”.
+
+11.	 Note the modified “IAM User sign-in link”: https://course-master.signin.aws.amazon.com/console
+
+12.	Sign out of AWS console.
+
+13.	Sign in using this URL : https://course-master.signin.aws.amazon.com/console
+
+14.	Type User-name in “IAM user name” text box, and password in “Password” text box -> click on “sign-in” button.
+
+ 15.	In the “Find Services” textbox, type “IAM” and click on IAM.
+
+16.	Under “Access Management”, click on “Users”-> click on “course-master” username.
+
+17.	Click on “Security Credentials” tab
+
+18.	Scroll down and click on “Generate credentials” in HTTPS git credentials for AWS Code Commit
+
+19.	Click on “Generate credentials” -> Download credentials“Close” button.
+
+20.	Click on “Services” ->  under “All Services”, type codecommit ->click on CodeCommit
+
+ 21.	On the CodeCommit landing page, click on “Repositories” from left menu panel -> click on “Create repository
+
+ 22.	 In “Repository settings”, type “Repository name” as “node-sample-ap”-> click on “Create” button.
+
+23.	 Scroll down -> click on “Copy” under “Step 3 : Clone the repository”.
+
+
+
+ 24.	Open the working directory on your local system on VS Code. In this case, ~/Documents/CICDDemo
+
+25.	 Click on “Terminal” menu -> “New Terminal”
+
+ 26.	Paste the copied URL from step 23 in terminal and hit enter
+
+27.	 Type the CodeCommit username you generated in step 19 in the pop up for “Username” -> hit enter
+
+ 28.	 Type CodeCommit password you generated in step 19 in the “Password” pop-up -> hit enter.
+
+ 29.	A local directory/git repository “node-sample-ap” got created under your working directory (here ~/Documents/CICDDemo).
+
+ 30.	Move into the newly created local git repository : cd node-sample-ap
+
+ 31.	Create .gitignore file : touch .gitignore
+ 
+ 32.	Open .gitignore and add these two entries:
 node_modules/
 .DS_Store . Save the file.
 
-```
-- 33.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
-```
-```
-- 34.	First commit# Commit .gitignore to local repository : git commit -am “First commit”.
-```
-```
+
+ 33.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .gitignore
+
+
+ 34.	First commit# Commit .gitignore to local repository : git commit -am “First commit”.
+
+
 - 35.	First Push#Push first commit to remote github repository : git push -u origin master
-```
-```
-- 36.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
-```
-```
-- 37.	 .gitignore file is now present in “node-sample-ap” repository.
-```
-```sh
-- 38.	Copy all the contents of ~/Documents/CICD/nodejs-web-app-with-ejs/ to present working directory (~/Documents/CICDDemo) : cp -R ../../CICD/nodejs-web-app-with-ejs/ .
-```
 
-```
-- 39.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .
-```
-
-```
-- 40.	Commit newly tracked files to local repository : git commit -am “Second commit”.
-```
-
-```
-- 41.	Push second commit to remote github repository : git push -u origin master
-```
-
-- 42.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
-
-- 43.	Pushed files in step 42 are now present in “node-sample-ap” repository.
+ 36.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
 
 
+37.	 .gitignore file is now present in “node-sample-ap” repository.
+
+
+ 38.	Copy all the contents of ~/Documents/CICD/nodejs-web-app-with-ejs/ to present working directory (~/Documents/CICDDemo) : cp -R ../../CICD/nodejs-web-app-with-ejs/ .
+
+
+
+ 39.	Check status of file tracking by git and add newly added/modified files to git tracking : git status -> git add .
+
+
+
+40.	Commit newly tracked files to local repository : git commit -am “Second commit”.
+
+
+41.	Push second commit to remote github repository : git push -u origin master
+
+
+42.	 Check CodeCommit repository for newly pushed commit : click on “Repositories” in the left menu panel -> click on “node-sample-ap” under “Repositories”.
+
+43.	Pushed files in step 42 are now present in “node-sample-ap” repository.
+
+```
 
 
 
